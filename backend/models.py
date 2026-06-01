@@ -13,7 +13,7 @@ class Job(Base):
     location = Column(String)
     url = Column(String, unique=True, index=True)
     description = Column(Text)
-    date_posted = Column(DateTime, default=datetime.datetime.utcnow)
+    date_posted = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
 
     analysis = relationship("JobAnalysis", back_populates="job", uselist=False)
     application = relationship("Application", back_populates="job", uselist=False)
