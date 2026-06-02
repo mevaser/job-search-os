@@ -24,8 +24,23 @@ def override_get_db():
     finally:
         db.close()
 
-app.dependency_overrides[get_db] = override_get_db
 client = TestClient(app)
+
+@pytest.fixture(autouse=True)
+def setup_dependencies():
+    app.dependency_overrides[get_db] = override_get_db
+    yield
+    app.dependency_overrides.clear()
+
+@pytest.fixture(autouse=True)
+def clean_db():
+    db = TestingSessionLocal()
+    from backend.models import Job, JobAnalysis, Application
+    db.query(JobAnalysis).delete()
+    db.query(Application).delete()
+    db.query(Job).delete()
+    db.commit()
+    db.close()
 
 # Mock fetch_live_jobs
 import backend.main

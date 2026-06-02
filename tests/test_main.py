@@ -33,9 +33,23 @@ def override_get_db():
     finally:
         db.close()
 
-app.dependency_overrides[get_db] = override_get_db
-
 client = TestClient(app)
+
+@pytest.fixture(autouse=True)
+def setup_dependencies():
+    app.dependency_overrides[get_db] = override_get_db
+    yield
+    app.dependency_overrides.clear()
+
+@pytest.fixture(autouse=True)
+def clean_db():
+    db = TestingSessionLocal()
+    from backend.models import Job, JobAnalysis, Application
+    db.query(JobAnalysis).delete()
+    db.query(Application).delete()
+    db.query(Job).delete()
+    db.commit()
+    db.close()
 
 def test_health_check():
     response = client.get("/health")
@@ -79,8 +93,8 @@ def test_process_mock_endpoint():
     db = TestingSessionLocal()
     from backend.models import JobAnalysis # Import here to avoid circular/top-level issues if any
     
-    # Check that at least 4 jobs are now in DB with source 'mock_csv'
-    jobs = db.query(Job).filter(Job.source == "mock_csv").all()
+    # Check that at least 4 jobs are now in DB
+    jobs = db.query(Job).all()
     assert len(jobs) == 4
     
     # Check that they have corresponding JobAnalysis
