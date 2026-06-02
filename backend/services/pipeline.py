@@ -87,6 +87,7 @@ def process_mock_data(file_path: str) -> List[Dict[str, Any]]:
                 "title": title,
                 "company": row.get("company", ""),
                 "location": row.get("location", ""),
+                "description": description,
                 "role_family": role_family,
                 "seniority_level": seniority,
                 "experience_requirement": experience,

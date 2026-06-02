@@ -14,8 +14,12 @@ from backend.models import Job
 # CRITICAL: Configure the test database to use sqlite:///:memory:
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
 
+from sqlalchemy.pool import StaticPool
+
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL, 
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool
 )
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -60,4 +64,30 @@ def test_create_and_read_job():
     assert db_job is not None
     assert db_job.title == "Data Engineer"
     assert db_job.company == "AI Startup"
+    db.close()
+
+def test_process_mock_endpoint():
+    # Make sure DB is clean before test if needed, but in-memory DB persists per sessionmaker?
+    # Actually, the engine is created once, so we might have the mock_job from previous test.
+    # We will just assert that processing adds new jobs and we can find them.
+    response = client.post("/api/jobs/process-mock")
+    assert response.status_code == 200
+    data = response.json()
+    assert "Successfully processed" in data["message"]
+    assert "4" in data["message"] # There are 4 jobs in mock_jobs.csv
+
+    db = TestingSessionLocal()
+    from backend.models import JobAnalysis # Import here to avoid circular/top-level issues if any
+    
+    # Check that at least 4 jobs are now in DB with source 'mock_csv'
+    jobs = db.query(Job).filter(Job.source == "mock_csv").all()
+    assert len(jobs) == 4
+    
+    # Check that they have corresponding JobAnalysis
+    for job in jobs:
+        analysis = db.query(JobAnalysis).filter(JobAnalysis.job_id == job.id).first()
+        assert analysis is not None
+        assert analysis.decision in ["KEEP", "REVIEW", "REJECT"]
+        assert job.analysis is not None # Also test relationship
+    
     db.close()
