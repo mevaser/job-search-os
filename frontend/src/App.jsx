@@ -4,6 +4,7 @@ function App() {
   const [jobs, setJobs] = useState([])
   const [loading, setLoading] = useState(false)
   const [processing, setProcessing] = useState(false)
+  const [scanning, setScanning] = useState(false)
 
   const fetchJobs = async () => {
     setLoading(true)
@@ -36,6 +37,28 @@ function App() {
     }
   }
 
+  const handleScanLive = async () => {
+    setScanning(true)
+    try {
+      await fetch('http://localhost:8000/api/jobs/scan-real', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          search_term: "Junior ML Engineer",
+          location: "Israel",
+          results_wanted: 10
+        })
+      })
+      await fetchJobs()
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setScanning(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8 font-sans">
       <div className="max-w-6xl mx-auto">
@@ -44,15 +67,34 @@ function App() {
             <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
               Job Search OS
             </h1>
-            <p className="text-gray-400 mt-1">Mock Pipeline Dashboard</p>
+            <p className="text-gray-400 mt-1">Live Pipeline Dashboard</p>
           </div>
-          <button 
-            onClick={handleProcessMock} 
-            disabled={processing}
-            className="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-700 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5"
-          >
-            {processing ? 'Processing...' : 'Process Mock Data'}
-          </button>
+          <div className="flex space-x-4">
+            <button 
+              onClick={handleProcessMock} 
+              disabled={processing || scanning}
+              className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:text-gray-500 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out"
+            >
+              {processing ? 'Processing...' : 'Process Mock Data'}
+            </button>
+            <button 
+              onClick={handleScanLive} 
+              disabled={scanning || processing}
+              className="bg-blue-600 hover:bg-blue-500 disabled:bg-blue-900 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 flex items-center"
+            >
+              {scanning ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Scraping live jobs... Please wait
+                </>
+              ) : (
+                'Scan Live Jobs'
+              )}
+            </button>
+          </div>
         </header>
 
         {loading && jobs.length === 0 ? (
