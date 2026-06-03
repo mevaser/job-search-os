@@ -51,7 +51,7 @@ def mock_fetch_live_jobs(search_term, location, results_wanted):
             "company": "TestCorp",
             "location": location,
             "description": "Looking for a Python dev with 1 year experience.",
-            "url": "http://test-url.com/1",
+            "job_url": "http://test-url.com/1",
             "source": "jobspy_test"
         }
     ]

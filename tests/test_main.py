@@ -64,7 +64,7 @@ def test_create_and_read_job():
         title="Data Engineer",
         company="AI Startup",
         location="Remote",
-        url="https://linkedin.com/jobs/999",
+        job_url="https://linkedin.com/jobs/999",
         description="Looking for an AI engineer with Python experience."
     )
     db.add(mock_job)
