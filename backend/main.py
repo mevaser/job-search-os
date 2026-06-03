@@ -44,7 +44,7 @@ def process_mock_jobs(db: Session = Depends(get_db)):
             company=res["company"],
             location=res["location"],
             description=res.get("description", ""),
-            url=f"mock-{uuid.uuid4()}" 
+            job_url=f"mock-{uuid.uuid4()}" 
         )
         db.add(job)
         db.flush() 
@@ -77,8 +77,9 @@ def get_jobs(db: Session = Depends(get_db)):
             "company": job.company,
             "location": job.location,
             "source": job.source,
-            "url": job.url,
+            "job_url": job.job_url,
             "date_posted": job.date_posted.isoformat() if job.date_posted else None,
+            "created_at": job.created_at.isoformat() if hasattr(job, 'created_at') and job.created_at else None,
         }
         if job.analysis:
             job_data["analysis"] = {
@@ -118,7 +119,7 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
     processed_count = 0
     for r_job in raw_jobs:
         # Check if URL already exists to avoid duplicates
-        existing_job = db.query(models.Job).filter(models.Job.url == r_job["url"]).first()
+        existing_job = db.query(models.Job).filter(models.Job.job_url == r_job["job_url"]).first()
         if existing_job:
             continue
             
@@ -136,7 +137,7 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
             company=r_job["company"],
             location=r_job["location"],
             description=description,
-            url=r_job["url"]
+            job_url=r_job["job_url"]
         )
         db.add(job)
         db.flush()

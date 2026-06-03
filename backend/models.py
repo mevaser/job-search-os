@@ -11,9 +11,10 @@ class Job(Base):
     title = Column(String, index=True)
     company = Column(String, index=True)
     location = Column(String)
-    url = Column(String, unique=True, index=True)
+    job_url = Column(String, unique=True, index=True)
     description = Column(Text)
     date_posted = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
+    created_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
 
     analysis = relationship("JobAnalysis", back_populates="job", uselist=False)
     application = relationship("Application", back_populates="job", uselist=False)

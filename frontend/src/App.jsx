@@ -97,6 +97,12 @@ function App() {
           </div>
         </header>
 
+        {jobs.length > 0 && (
+          <div className="mb-4 text-gray-300 text-lg font-medium">
+            Total Jobs in DB: <span className="text-white font-bold">{jobs.length}</span>
+          </div>
+        )}
+
         {loading && jobs.length === 0 ? (
           <div className="text-center py-20 text-gray-500">Loading jobs...</div>
         ) : jobs.length === 0 ? (
@@ -112,6 +118,7 @@ function App() {
                     <th className="p-4 font-semibold">Job Title</th>
                     <th className="p-4 font-semibold">Company</th>
                     <th className="p-4 font-semibold">Role Family</th>
+                    <th className="p-4 font-semibold">Scanned At</th>
                     <th className="p-4 font-semibold text-center">Fit Score</th>
                     <th className="p-4 font-semibold text-center">Decision</th>
                   </tr>
@@ -120,13 +127,28 @@ function App() {
                   {jobs.map((job) => (
                     <tr key={job.id} className="hover:bg-gray-700/30 transition-colors">
                       <td className="p-4">
-                        <div className="font-medium text-gray-200">{job.title}</div>
+                        <div className="font-medium text-gray-200">
+                          {job.job_url ? (
+                            <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 hover:underline">
+                              {job.title}
+                            </a>
+                          ) : (
+                            job.title
+                          )}
+                        </div>
                         <div className="text-xs text-gray-500 mt-1">{job.location}</div>
                       </td>
                       <td className="p-4 text-gray-300">{job.company}</td>
                       <td className="p-4 text-gray-300">
                         {job.analysis?.role_family || 'N/A'}
                         <div className="text-xs text-gray-500 mt-1">Exp: {job.analysis?.experience_requirement ?? '?'} yrs</div>
+                      </td>
+                      <td className="p-4 text-gray-400 text-sm whitespace-nowrap">
+                        {job.created_at ? (() => {
+                          const d = new Date(job.created_at.endsWith('Z') ? job.created_at : job.created_at + 'Z');
+                          const pad = (n) => n.toString().padStart(2, '0');
+                          return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                        })() : 'N/A'}
                       </td>
                       <td className="p-4 text-center">
                         {job.analysis ? (

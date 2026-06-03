@@ -39,7 +39,7 @@ def fetch_live_jobs(search_term: str = "Junior ML Engineer", location: str = "Is
                 "company": company,
                 "location": job_location,
                 "description": description,
-                "url": url,
+                "job_url": url,
                 "source": site
             })
             
