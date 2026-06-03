@@ -5,8 +5,15 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [processing, setProcessing] = useState(false)
   const [scanning, setScanning] = useState(false)
-  const [filterDecision, setFilterDecision] = useState('All')
-  const [filterStatus, setFilterStatus] = useState('All')
+  const [filters, setFilters] = useState({
+    title: '',
+    company: '',
+    role_family: '',
+    decision: 'All',
+    status: 'All',
+    notes: ''
+  })
+  const [activeFilterColumn, setActiveFilterColumn] = useState(null)
 
   const fetchJobs = async () => {
     setLoading(true)
@@ -75,13 +82,66 @@ function App() {
   }
 
   const filteredJobs = jobs.filter(job => {
-    const matchDecision = filterDecision === 'All' || (job.analysis && job.analysis.decision === filterDecision)
-    const matchStatus = filterStatus === 'All' || (job.application_status || 'Not Applied') === filterStatus
-    return matchDecision && matchStatus
+    const matchTitle = !filters.title || job.title.toLowerCase().includes(filters.title.toLowerCase())
+    const matchCompany = !filters.company || job.company.toLowerCase().includes(filters.company.toLowerCase())
+    const matchRole = !filters.role_family || (job.analysis && job.analysis.role_family && job.analysis.role_family.toLowerCase().includes(filters.role_family.toLowerCase()))
+    const matchDecision = filters.decision === 'All' || (job.analysis && job.analysis.decision === filters.decision)
+    const matchStatus = filters.status === 'All' || (job.application_status || 'Not Applied') === filters.status
+    const matchNotes = !filters.notes || (job.application_notes && job.application_notes.toLowerCase().includes(filters.notes.toLowerCase()))
+    
+    return matchTitle && matchCompany && matchRole && matchDecision && matchStatus && matchNotes
   })
 
+  const handleFilterChange = (column, value) => {
+    setFilters(prev => ({ ...prev, [column]: value }))
+  }
+
+  const FilterPopover = ({ column, label, type, options = [], alignRight = false }) => {
+    if (activeFilterColumn !== column) return null;
+
+    return (
+      <div className={`absolute top-full ${alignRight ? 'right-0' : 'left-0'} mt-2 w-48 bg-gray-800 border border-gray-600 rounded-xl shadow-2xl z-30 p-3 text-left font-normal normal-case`} onClick={e => e.stopPropagation()}>
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-xs font-semibold text-gray-300">Filter {label}</span>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              handleFilterChange(column, type === 'select' ? 'All' : '');
+            }} 
+            className="text-gray-500 hover:text-gray-300 text-xs"
+          >
+            Clear
+          </button>
+        </div>
+        {type === 'select' ? (
+          <select 
+            value={filters[column]} 
+            onChange={(e) => handleFilterChange(column, e.target.value)}
+            className="w-full bg-gray-700 text-white rounded px-2 py-1.5 text-sm border border-gray-600 focus:outline-none focus:border-blue-500"
+          >
+            {options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+          </select>
+        ) : (
+          <input 
+            type="text" 
+            placeholder={`Search ${label}...`}
+            value={filters[column]}
+            onChange={(e) => handleFilterChange(column, e.target.value)}
+            className="w-full bg-gray-700 text-white rounded px-2 py-1.5 text-sm border border-gray-600 focus:outline-none focus:border-blue-500"
+            autoFocus
+          />
+        )}
+      </div>
+    );
+  };
+
+  const toggleFilter = (column, e) => {
+    e.stopPropagation();
+    setActiveFilterColumn(prev => prev === column ? null : column);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 p-8 font-sans">
+    <div className="min-h-screen bg-gray-900 text-gray-100 p-8 font-sans" onClick={() => setActiveFilterColumn(null)}>
       <div className="max-w-6xl mx-auto">
         <header className="flex justify-between items-center mb-8 pb-4 border-b border-gray-800">
           <div>
@@ -119,42 +179,8 @@ function App() {
         </header>
 
         {jobs.length > 0 && (
-          <div className="flex flex-col space-y-4 mb-4">
-            <div className="text-gray-300 text-lg font-medium">
-              Total Jobs in DB: <span className="text-white font-bold">{jobs.length}</span>
-            </div>
-            
-            <div className="flex flex-wrap items-center gap-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
-              <div className="flex items-center space-x-2">
-                <label className="text-gray-400 font-medium">AI Decision:</label>
-                <select 
-                  value={filterDecision} 
-                  onChange={(e) => setFilterDecision(e.target.value)}
-                  className="bg-gray-700 text-white rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500"
-                >
-                  <option value="All">All</option>
-                  <option value="KEEP">KEEP</option>
-                  <option value="REVIEW">REVIEW</option>
-                  <option value="REJECT">REJECT</option>
-                </select>
-              </div>
-              
-              <div className="flex items-center space-x-2">
-                <label className="text-gray-400 font-medium">Application Status:</label>
-                <select 
-                  value={filterStatus} 
-                  onChange={(e) => setFilterStatus(e.target.value)}
-                  className="bg-gray-700 text-white rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500"
-                >
-                  <option value="All">All</option>
-                  <option value="Not Applied">Not Applied</option>
-                  <option value="Applied">Applied</option>
-                  <option value="Interviewing">Interviewing</option>
-                  <option value="Rejected">Rejected</option>
-                  <option value="Offer">Offer</option>
-                </select>
-              </div>
-            </div>
+          <div className="mb-4 text-gray-300 text-lg font-medium">
+            Total Jobs in DB: <span className="text-white font-bold">{jobs.length}</span>
           </div>
         )}
 
@@ -170,14 +196,50 @@ function App() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-800/80 border-b border-gray-700 text-gray-400 text-sm uppercase tracking-wider">
-                    <th className="p-4 font-semibold">Job Title</th>
-                    <th className="p-4 font-semibold">Company</th>
-                    <th className="p-4 font-semibold">Role Family</th>
+                    <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('title', e)}>
+                      <div className="flex items-center space-x-1">
+                        <span>Job Title</span>
+                        <span className={`text-[10px] ${filters.title ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="title" label="Job Title" type="text" />
+                    </th>
+                    <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('company', e)}>
+                      <div className="flex items-center space-x-1">
+                        <span>Company</span>
+                        <span className={`text-[10px] ${filters.company ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="company" label="Company" type="text" />
+                    </th>
+                    <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('role_family', e)}>
+                      <div className="flex items-center space-x-1">
+                        <span>Role Family</span>
+                        <span className={`text-[10px] ${filters.role_family ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="role_family" label="Role Family" type="text" />
+                    </th>
                     <th className="p-4 font-semibold">Scanned At</th>
                     <th className="p-4 font-semibold text-center">Fit Score</th>
-                    <th className="p-4 font-semibold text-center">Decision</th>
-                    <th className="p-4 font-semibold text-center">Status</th>
-                    <th className="p-4 font-semibold">Notes</th>
+                    <th className="p-4 font-semibold text-center relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('decision', e)}>
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Decision</span>
+                        <span className={`text-[10px] ${filters.decision !== 'All' ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="decision" label="Decision" type="select" options={['All', 'KEEP', 'REVIEW', 'REJECT']} />
+                    </th>
+                    <th className="p-4 font-semibold text-center relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('status', e)}>
+                      <div className="flex items-center justify-center space-x-1">
+                        <span>Status</span>
+                        <span className={`text-[10px] ${filters.status !== 'All' ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="status" label="Status" type="select" options={['All', 'Not Applied', 'Applied', 'Interviewing', 'Rejected', 'Offer']} alignRight={true} />
+                    </th>
+                    <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('notes', e)}>
+                      <div className="flex items-center space-x-1">
+                        <span>Notes</span>
+                        <span className={`text-[10px] ${filters.notes ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
+                      </div>
+                      <FilterPopover column="notes" label="Notes" type="text" alignRight={true} />
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700/50">
