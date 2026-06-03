@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Text, DateTime
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Text, DateTime, Boolean
 from sqlalchemy.orm import relationship
 from backend.database import Base
 import datetime
@@ -17,9 +17,22 @@ class Job(Base):
     created_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
     application_status = Column(String, default="Not Applied")
     application_notes = Column(Text, default="")
+    is_updated = Column(Boolean, default=False)
 
     analysis = relationship("JobAnalysis", back_populates="job", uselist=False)
     application = relationship("Application", back_populates="job", uselist=False)
+    versions = relationship("JobVersion", back_populates="job", order_by="desc(JobVersion.changed_at)")
+
+class JobVersion(Base):
+    __tablename__ = "job_versions"
+
+    id = Column(Integer, primary_key=True, index=True)
+    job_id = Column(Integer, ForeignKey("jobs.id"))
+    old_title = Column(String)
+    old_description = Column(Text)
+    changed_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
+
+    job = relationship("Job", back_populates="versions")
 
 class JobAnalysis(Base):
     __tablename__ = "job_analysis"

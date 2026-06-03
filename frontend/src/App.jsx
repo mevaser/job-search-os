@@ -5,6 +5,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [processing, setProcessing] = useState(false)
   const [scanning, setScanning] = useState(false)
+  const [selectedJob, setSelectedJob] = useState(null)
   const [filters, setFilters] = useState({
     title: '',
     company: '',
@@ -150,7 +151,7 @@ function App() {
             </h1>
             <p className="text-gray-400 mt-1">Live Pipeline Dashboard</p>
           </div>
-          <div className="flex space-x-4">
+          <div className="flex gap-4">
             <button 
               onClick={handleProcessMock} 
               disabled={processing || scanning}
@@ -246,16 +247,30 @@ function App() {
                   {filteredJobs.map((job) => (
                     <tr key={job.id} className="hover:bg-gray-700/30 transition-colors">
                       <td className="p-4">
-                        <div className="font-medium text-gray-200">
-                          {job.job_url ? (
-                            <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 hover:underline">
-                              {job.title}
-                            </a>
-                          ) : (
-                            job.title
-                          )}
+                        <div className="flex flex-col space-y-1">
+                          <div className="font-medium text-gray-200 flex flex-wrap items-center gap-2">
+                            <span className="text-base">{job.title}</span>
+                            {job.is_updated && (
+                              <span className="bg-blue-500/20 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-500/30 whitespace-nowrap uppercase tracking-wide shadow-sm">
+                                Updated
+                              </span>
+                            )}
+                            {job.job_url && (
+                              <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 p-1" title="Open external link">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                              </a>
+                            )}
+                          </div>
+                          <div className="text-xs text-gray-500 flex justify-between items-center mt-1.5">
+                            <span>{job.location}</span>
+                            <button 
+                              onClick={() => setSelectedJob(job)}
+                              className="text-blue-400 hover:text-blue-300 font-medium px-2.5 py-1 rounded bg-blue-500/10 hover:bg-blue-500/20 transition-colors border border-blue-500/20 flex items-center gap-1"
+                            >
+                              Details
+                            </button>
+                          </div>
                         </div>
-                        <div className="text-xs text-gray-500 mt-1">{job.location}</div>
                       </td>
                       <td className="p-4 text-gray-300">{job.company}</td>
                       <td className="p-4 text-gray-300">
@@ -335,6 +350,120 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Modal */}
+      {selectedJob && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedJob(null)}>
+          <div className="bg-gray-800 border border-gray-700 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl" onClick={e => e.stopPropagation()}>
+            <div className="p-6 border-b border-gray-700 flex justify-between items-start">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-100 flex items-center space-x-3">
+                  <span>{selectedJob.title}</span>
+                  {selectedJob.is_updated && (
+                    <span className="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded-full border border-blue-500/30">
+                      UPDATED
+                    </span>
+                  )}
+                </h2>
+                <div className="text-gray-400 mt-1">{selectedJob.company} • {selectedJob.location}</div>
+              </div>
+              <button onClick={() => setSelectedJob(null)} className="text-gray-400 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            <div className="p-6 space-y-8">
+              {/* AI Analysis */}
+              {selectedJob.analysis && (
+                <div className="bg-gray-900/60 p-6 rounded-2xl border border-gray-700/60 shadow-inner">
+                  <div className="flex items-center gap-2 mb-4 border-b border-gray-700/60 pb-3">
+                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    <h3 className="text-lg font-bold text-gray-100">AI Analysis</h3>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
+                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Decision</div>
+                      <div className={`text-xl font-bold ${selectedJob.analysis.decision === 'KEEP' ? 'text-emerald-400' : selectedJob.analysis.decision === 'REVIEW' ? 'text-amber-400' : 'text-gray-400'}`}>
+                        {selectedJob.analysis.decision}
+                      </div>
+                    </div>
+                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
+                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Fit Score</div>
+                      <div className="text-xl font-bold text-blue-400">{selectedJob.analysis.fit_score}<span className="text-sm text-gray-500">/100</span></div>
+                    </div>
+                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
+                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Role Family</div>
+                      <div className="font-bold text-gray-200">{selectedJob.analysis.role_family}</div>
+                    </div>
+                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
+                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Experience</div>
+                      <div className="font-bold text-gray-200">{selectedJob.analysis.experience_requirement} yrs</div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-800/40 p-4 rounded-xl border border-gray-700/50 space-y-3">
+                    <div className="text-sm text-gray-300 leading-relaxed">
+                      <strong className="text-gray-200 mr-2">Breakdown:</strong> 
+                      {selectedJob.analysis.score_breakdown}
+                    </div>
+                    <div className="text-sm text-gray-300 leading-relaxed">
+                      <strong className="text-gray-200 mr-2">Evidence:</strong> 
+                      {selectedJob.analysis.evidence}
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Description */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 border-b border-gray-700/60 pb-3">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" /></svg>
+                  <h3 className="text-lg font-bold text-gray-200">Job Description</h3>
+                </div>
+                <div className="bg-gray-900/80 p-6 rounded-2xl border border-gray-700 text-base text-gray-300 whitespace-pre-wrap leading-relaxed max-h-[500px] overflow-y-auto shadow-inner">
+                  {selectedJob.description || 'No description available.'}
+                </div>
+              </div>
+
+              {/* Version History */}
+              {selectedJob.is_updated && selectedJob.versions && selectedJob.versions.length > 0 && (
+                <div className="bg-blue-900/10 p-6 rounded-2xl border border-blue-900/30">
+                  <div className="flex items-center gap-2 mb-4 border-b border-blue-900/50 pb-3">
+                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <h3 className="text-lg font-bold text-blue-200">Update History</h3>
+                  </div>
+                  <div className="space-y-5">
+                    {selectedJob.versions.map((v, i) => (
+                      <div key={i} className="bg-gray-800/80 p-5 rounded-xl border border-gray-700 shadow-sm relative">
+                        <div className="absolute top-0 right-0 bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-bl-lg rounded-tr-xl font-medium">
+                          {new Date(v.changed_at.endsWith('Z') ? v.changed_at : v.changed_at + 'Z').toLocaleString()}
+                        </div>
+                        <div className="mt-2 text-sm text-gray-300 mb-3">
+                          <strong className="text-gray-200">Previous Title:</strong> {v.old_title}
+                        </div>
+                        <div className="text-sm text-gray-400 whitespace-pre-wrap max-h-48 overflow-y-auto bg-gray-900/60 p-4 rounded-lg border border-gray-700/50 leading-relaxed">
+                          {v.old_description}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="p-6 border-t border-gray-700 flex justify-end gap-4 bg-gray-800/80 rounded-b-2xl sticky bottom-0">
+              <button onClick={() => setSelectedJob(null)} className="px-6 py-2.5 rounded-lg font-semibold text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition-colors border border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                Close
+              </button>
+              {selectedJob.job_url && (
+                <a href={selectedJob.job_url} target="_blank" rel="noopener noreferrer" className="px-6 py-2.5 rounded-lg font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20 flex items-center gap-2 border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                  Apply Now
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
