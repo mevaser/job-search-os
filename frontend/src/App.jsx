@@ -5,6 +5,8 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [processing, setProcessing] = useState(false)
   const [scanning, setScanning] = useState(false)
+  const [filterDecision, setFilterDecision] = useState('All')
+  const [filterStatus, setFilterStatus] = useState('All')
 
   const fetchJobs = async () => {
     setLoading(true)
@@ -59,6 +61,25 @@ function App() {
     }
   }
 
+  const handleUpdateJob = async (id, updates) => {
+    setJobs(jobs.map(job => job.id === id ? { ...job, ...updates } : job))
+    try {
+      await fetch(`http://localhost:8000/api/jobs/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updates)
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const filteredJobs = jobs.filter(job => {
+    const matchDecision = filterDecision === 'All' || (job.analysis && job.analysis.decision === filterDecision)
+    const matchStatus = filterStatus === 'All' || (job.application_status || 'Not Applied') === filterStatus
+    return matchDecision && matchStatus
+  })
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-8 font-sans">
       <div className="max-w-6xl mx-auto">
@@ -98,8 +119,42 @@ function App() {
         </header>
 
         {jobs.length > 0 && (
-          <div className="mb-4 text-gray-300 text-lg font-medium">
-            Total Jobs in DB: <span className="text-white font-bold">{jobs.length}</span>
+          <div className="flex flex-col space-y-4 mb-4">
+            <div className="text-gray-300 text-lg font-medium">
+              Total Jobs in DB: <span className="text-white font-bold">{jobs.length}</span>
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-6 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
+              <div className="flex items-center space-x-2">
+                <label className="text-gray-400 font-medium">AI Decision:</label>
+                <select 
+                  value={filterDecision} 
+                  onChange={(e) => setFilterDecision(e.target.value)}
+                  className="bg-gray-700 text-white rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500"
+                >
+                  <option value="All">All</option>
+                  <option value="KEEP">KEEP</option>
+                  <option value="REVIEW">REVIEW</option>
+                  <option value="REJECT">REJECT</option>
+                </select>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <label className="text-gray-400 font-medium">Application Status:</label>
+                <select 
+                  value={filterStatus} 
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                  className="bg-gray-700 text-white rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500"
+                >
+                  <option value="All">All</option>
+                  <option value="Not Applied">Not Applied</option>
+                  <option value="Applied">Applied</option>
+                  <option value="Interviewing">Interviewing</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Offer">Offer</option>
+                </select>
+              </div>
+            </div>
           </div>
         )}
 
@@ -121,10 +176,12 @@ function App() {
                     <th className="p-4 font-semibold">Scanned At</th>
                     <th className="p-4 font-semibold text-center">Fit Score</th>
                     <th className="p-4 font-semibold text-center">Decision</th>
+                    <th className="p-4 font-semibold text-center">Status</th>
+                    <th className="p-4 font-semibold">Notes</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700/50">
-                  {jobs.map((job) => (
+                  {filteredJobs.map((job) => (
                     <tr key={job.id} className="hover:bg-gray-700/30 transition-colors">
                       <td className="p-4">
                         <div className="font-medium text-gray-200">
@@ -175,6 +232,38 @@ function App() {
                         ) : (
                           <span className="text-gray-600">-</span>
                         )}
+                      </td>
+                      <td className="p-4 text-center">
+                        <select 
+                          value={job.application_status || 'Not Applied'} 
+                          onChange={(e) => handleUpdateJob(job.id, { application_status: e.target.value })}
+                          className={`bg-gray-700 text-white rounded px-2 py-1 border focus:outline-none focus:border-blue-500 text-sm ${
+                            job.application_status === 'Applied' ? 'border-blue-500' :
+                            job.application_status === 'Interviewing' ? 'border-purple-500' :
+                            job.application_status === 'Rejected' ? 'border-red-500' :
+                            job.application_status === 'Offer' ? 'border-green-500' :
+                            'border-gray-600'
+                          }`}
+                        >
+                          <option value="Not Applied">Not Applied</option>
+                          <option value="Applied">Applied</option>
+                          <option value="Interviewing">Interviewing</option>
+                          <option value="Rejected">Rejected</option>
+                          <option value="Offer">Offer</option>
+                        </select>
+                      </td>
+                      <td className="p-4">
+                        <input 
+                          type="text" 
+                          placeholder="Add notes..." 
+                          defaultValue={job.application_notes || ''}
+                          onBlur={(e) => {
+                            if (e.target.value !== (job.application_notes || '')) {
+                              handleUpdateJob(job.id, { application_notes: e.target.value })
+                            }
+                          }}
+                          className="bg-gray-700/50 text-gray-300 text-sm rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500 focus:bg-gray-700 w-full min-w-[150px]"
+                        />
                       </td>
                     </tr>
                   ))}

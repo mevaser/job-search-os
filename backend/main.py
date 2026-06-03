@@ -80,6 +80,8 @@ def get_jobs(db: Session = Depends(get_db)):
             "job_url": job.job_url,
             "date_posted": job.date_posted.isoformat() if job.date_posted else None,
             "created_at": job.created_at.isoformat() if hasattr(job, 'created_at') and job.created_at else None,
+            "application_status": job.application_status,
+            "application_notes": job.application_notes,
         }
         if job.analysis:
             job_data["analysis"] = {
@@ -161,3 +163,19 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
         "search_term": request.search_term,
         "location": request.location
     }
+
+class JobUpdateRequest(BaseModel):
+    application_status: str | None = None
+    application_notes: str | None = None
+
+@app.put("/api/jobs/{job_id}")
+def update_job(job_id: int, request: JobUpdateRequest, db: Session = Depends(get_db)):
+    job = db.query(models.Job).filter(models.Job.id == job_id).first()
+    if not job:
+        return {"error": "Job not found"}
+    if request.application_status is not None:
+        job.application_status = request.application_status
+    if request.application_notes is not None:
+        job.application_notes = request.application_notes
+    db.commit()
+    return {"message": "Job updated successfully"}

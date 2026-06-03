@@ -15,6 +15,8 @@ class Job(Base):
     description = Column(Text)
     date_posted = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
     created_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
+    application_status = Column(String, default="Not Applied")
+    application_notes = Column(Text, default="")
 
     analysis = relationship("JobAnalysis", back_populates="job", uselist=False)
     application = relationship("Application", back_populates="job", uselist=False)
