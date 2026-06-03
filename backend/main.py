@@ -9,6 +9,7 @@ import uuid
 import datetime
 from backend.services.pipeline import process_mock_data, extract_experience, classify_role_family, classify_seniority, score_job
 from backend.services.scraper import fetch_live_jobs
+from backend.ats_scraper import scrape_ats_jobs
 from pydantic import BaseModel
 
 # Create the database tables
@@ -39,12 +40,16 @@ def process_mock_jobs(db: Session = Depends(get_db)):
     
     processed_count = 0
     for res in results:
+        desc = res.get("description")
+        if not desc or not str(desc).strip():
+            desc = "No description provided by the source."
+            
         job = models.Job(
             source="mock_csv",
             title=res["title"],
             company=res["company"],
             location=res["location"],
-            description=res.get("description", ""),
+            description=desc,
             job_url=f"mock-{uuid.uuid4()}" 
         )
         db.add(job)
@@ -135,8 +140,11 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
     
     processed_count = 0
     for r_job in raw_jobs:
-        description = r_job["description"]
-        title = r_job["title"]
+        description = r_job.get("description")
+        if not description or not str(description).strip():
+            description = "No description provided by the source."
+            
+        title = r_job.get("title", "Unknown Title")
 
         # Check if URL already exists to avoid duplicates
         existing_job = db.query(models.Job).filter(models.Job.job_url == r_job["job_url"]).first()
@@ -220,6 +228,101 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
         "message": f"Scraped {len(raw_jobs)} jobs. Saved {processed_count} new jobs to DB.",
         "search_term": request.search_term,
         "location": request.location
+    }
+
+@app.post("/api/jobs/scan-ats")
+def scan_ats_jobs(db: Session = Depends(get_db)):
+    """Trigger a Boolean search for ATS jobs and process through the pipeline."""
+    raw_jobs = scrape_ats_jobs(num_results=20)
+    
+    processed_count = 0
+    for r_job in raw_jobs:
+        description = r_job.get("description")
+        if not description or not str(description).strip():
+            description = "No description provided by the source."
+            
+        title = r_job.get("title", "Unknown Title")
+
+        # Check if URL already exists to avoid duplicates
+        existing_job = db.query(models.Job).filter(models.Job.job_url == r_job["job_url"]).first()
+        if existing_job:
+            if existing_job.title != title or existing_job.description != description:
+                # Save old version
+                old_version = models.JobVersion(
+                    job_id=existing_job.id,
+                    old_title=existing_job.title,
+                    old_description=existing_job.description
+                )
+                db.add(old_version)
+                
+                # Update existing job
+                existing_job.title = title
+                existing_job.description = description
+                existing_job.is_updated = True
+                existing_job.created_at = datetime.datetime.now(datetime.timezone.utc)
+                
+                # Re-run AI pipeline
+                experience = extract_experience(description)
+                role_family = classify_role_family(title, description)
+                seniority = classify_seniority(title, experience)
+                score, decision, breakdown, evidence = score_job(role_family, experience)
+                
+                if existing_job.analysis:
+                    existing_job.analysis.role_family = role_family
+                    existing_job.analysis.seniority_level = seniority
+                    existing_job.analysis.experience_requirement = experience
+                    existing_job.analysis.fit_score = score
+                    existing_job.analysis.decision = decision
+                    existing_job.analysis.score_breakdown = breakdown
+                    existing_job.analysis.evidence = evidence
+                else:
+                    analysis = models.JobAnalysis(
+                        job_id=existing_job.id,
+                        role_family=role_family,
+                        seniority_level=seniority,
+                        experience_requirement=experience,
+                        fit_score=score,
+                        decision=decision,
+                        score_breakdown=breakdown,
+                        evidence=evidence
+                    )
+                    db.add(analysis)
+                
+                processed_count += 1
+            continue
+        
+        experience = extract_experience(description)
+        role_family = classify_role_family(title, description)
+        seniority = classify_seniority(title, experience)
+        score, decision, breakdown, evidence = score_job(role_family, experience)
+        
+        job = models.Job(
+            source=r_job["source"],
+            title=title,
+            company=r_job["company"],
+            location=r_job["location"],
+            description=description,
+            job_url=r_job["job_url"]
+        )
+        db.add(job)
+        db.flush()
+        
+        analysis = models.JobAnalysis(
+            job_id=job.id,
+            role_family=role_family,
+            seniority_level=seniority,
+            experience_requirement=experience,
+            fit_score=score,
+            decision=decision,
+            score_breakdown=breakdown,
+            evidence=evidence
+        )
+        db.add(analysis)
+        processed_count += 1
+        
+    db.commit()
+    return {
+        "message": f"Scraped {len(raw_jobs)} ATS jobs. Processed/Updated {processed_count} jobs."
     }
 
 class JobUpdateRequest(BaseModel):

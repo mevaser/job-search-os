@@ -7,3 +7,6 @@ pydantic-settings
 python-dotenv
 python-jobspy
 pandas
+googlesearch-python
+beautifulsoup4
+requests

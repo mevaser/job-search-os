@@ -5,6 +5,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [processing, setProcessing] = useState(false)
   const [scanning, setScanning] = useState(false)
+  const [scanningAts, setScanningAts] = useState(false)
   const [selectedJob, setSelectedJob] = useState(null)
   const [filters, setFilters] = useState({
     title: '',
@@ -44,6 +45,20 @@ function App() {
       console.error(err)
     } finally {
       setProcessing(false)
+    }
+  }
+
+  const handleScanAts = async () => {
+    setScanningAts(true)
+    try {
+      await fetch('http://localhost:8000/api/jobs/scan-ats', {
+        method: 'POST'
+      })
+      await fetchJobs()
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setScanningAts(false)
     }
   }
 
@@ -154,14 +169,14 @@ function App() {
           <div className="flex gap-4">
             <button 
               onClick={handleProcessMock} 
-              disabled={processing || scanning}
+              disabled={processing || scanning || scanningAts}
               className="bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 disabled:text-gray-500 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out"
             >
               {processing ? 'Processing...' : 'Process Mock Data'}
             </button>
             <button 
               onClick={handleScanLive} 
-              disabled={scanning || processing}
+              disabled={scanning || processing || scanningAts}
               className="bg-blue-600 hover:bg-blue-500 disabled:bg-blue-900 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 flex items-center"
             >
               {scanning ? (
@@ -170,10 +185,27 @@ function App() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Scraping live jobs... Please wait
+                  Scraping...
                 </>
               ) : (
                 'Scan Live Jobs'
+              )}
+            </button>
+            <button 
+              onClick={handleScanAts} 
+              disabled={scanningAts || scanning || processing}
+              className="bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 flex items-center"
+            >
+              {scanningAts ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Scanning ATS...
+                </>
+              ) : (
+                'Scan ATS (Boolean)'
               )}
             </button>
           </div>
