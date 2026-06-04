@@ -11,3 +11,4 @@ googlesearch-python
 beautifulsoup4
 requests
 ddgs
+openai

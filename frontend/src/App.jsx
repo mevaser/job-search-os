@@ -6,6 +6,7 @@ function App() {
   const [processing, setProcessing] = useState(false)
   const [scanning, setScanning] = useState(false)
   const [scanningAts, setScanningAts] = useState(false)
+  const [scanProgress, setScanProgress] = useState('')
   const [selectedJob, setSelectedJob] = useState(null)
   const [filters, setFilters] = useState({
     title: '',
@@ -50,15 +51,47 @@ function App() {
 
   const handleScanAts = async () => {
     setScanningAts(true)
+    setScanProgress('Starting scan...')
     try {
       const res = await fetch('http://localhost:8000/api/jobs/scan-ats', {
         method: 'POST'
       })
-      const data = await res.json()
       if (!res.ok) {
-        alert(`Error scanning ATS: ${data.detail || data.message || 'Unknown error'}`)
-      } else {
-        alert(data.message)
+        const errData = await res.json()
+        alert(`Error scanning ATS: ${errData.detail || errData.message || 'Unknown error'}`)
+        setScanningAts(false)
+        setScanProgress('')
+        return
+      }
+      
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder('utf-8')
+      let done = false
+      
+      while (!done) {
+        const { value, done: readerDone } = await reader.read()
+        done = readerDone
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true })
+          const lines = chunk.split('\n')
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              try {
+                const data = JSON.parse(line.slice(6))
+                if (data.status) {
+                  setScanProgress(data.status)
+                }
+                if (data.type === 'complete') {
+                  alert(data.status)
+                } else if (data.type === 'error') {
+                  console.error("Error from stream:", data.status)
+                }
+              } catch (e) {
+                console.error("Error parsing stream line:", line, e)
+              }
+            }
+          }
+        }
       }
       await fetchJobs()
     } catch (err) {
@@ -66,6 +99,7 @@ function App() {
       alert(`Error scanning ATS: ${err.message}`)
     } finally {
       setScanningAts(false)
+      setScanProgress('')
     }
   }
 
@@ -209,7 +243,10 @@ function App() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Scanning ATS...
+                  <span className="flex flex-col text-left leading-tight">
+                    <span>Scanning ATS...</span>
+                    {scanProgress && <span className="text-[10px] text-purple-200 truncate max-w-[150px]">{scanProgress}</span>}
+                  </span>
                 </>
               ) : (
                 'Scan ATS (Boolean)'
