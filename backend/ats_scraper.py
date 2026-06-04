@@ -1,20 +1,48 @@
 import requests
 from bs4 import BeautifulSoup
-from googlesearch import search
 import re
+import os
+import time
+from dotenv import load_dotenv
+from ddgs import DDGS
 
-def scrape_ats_jobs(num_results=20):
-    query = 'site:boards.greenhouse.io OR site:comeet.com OR site:jobs.lever.co OR site:workday.com ("junior" OR "entry level" OR "data") ("Israel" OR "Tel Aviv")'
-    print(f"Running boolean ATS search: {query}")
-    
+load_dotenv()
+
+def scrape_ats_jobs(num_results=5):
     results = []
+    search_urls = set()
+    
+    domains = ["boards.greenhouse.io", "comeet.com", "jobs.lever.co", "workday.com"]
+    terms = ["Israel junior data", "Israel entry level developer", "Israel junior python"]
     
     try:
-        # Perform Google search
-        search_urls = search(query, num_results=num_results, sleep_interval=2)
+        ddgs = DDGS()
+        for domain in domains:
+            for term in terms:
+                query = f"site:{domain} {term}"
+                print(f"Running flattened ATS search via DuckDuckGo: {query}")
+                
+                try:
+                    ddg_results = ddgs.text(query, max_results=num_results)
+                    for result in ddg_results:
+                        link = result.get('href')
+                        if link:
+                            search_urls.add(link)
+                except Exception as inner_e:
+                    print(f"Error for query '{query}': {inner_e}")
+                    continue
+                    
+                time.sleep(1)
+                
     except Exception as e:
-        print(f"Error during Google search: {e}")
+        print(f"Error during DuckDuckGo search: {e}")
+        raise Exception(f"DuckDuckGo Search failed. Details: {e}")
+            
+    if not search_urls:
+        print("No URLs found via DuckDuckGo.")
         return results
+        
+    search_urls = list(search_urls)
 
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'

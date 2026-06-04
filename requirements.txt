@@ -10,3 +10,4 @@ pandas
 googlesearch-python
 beautifulsoup4
 requests
+ddgs

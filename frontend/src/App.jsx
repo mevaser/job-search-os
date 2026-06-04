@@ -51,12 +51,19 @@ function App() {
   const handleScanAts = async () => {
     setScanningAts(true)
     try {
-      await fetch('http://localhost:8000/api/jobs/scan-ats', {
+      const res = await fetch('http://localhost:8000/api/jobs/scan-ats', {
         method: 'POST'
       })
+      const data = await res.json()
+      if (!res.ok) {
+        alert(`Error scanning ATS: ${data.detail || data.message || 'Unknown error'}`)
+      } else {
+        alert(data.message)
+      }
       await fetchJobs()
     } catch (err) {
       console.error(err)
+      alert(`Error scanning ATS: ${err.message}`)
     } finally {
       setScanningAts(false)
     }

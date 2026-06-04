@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from backend.config import settings
@@ -73,7 +73,7 @@ def process_mock_jobs(db: Session = Depends(get_db)):
 
 @app.get("/api/jobs")
 def get_jobs(db: Session = Depends(get_db)):
-    jobs = db.query(models.Job).all()
+    jobs = db.query(models.Job).order_by(models.Job.id.desc()).all()
     # We will just return a simple list of dicts for now to avoid setting up complex Pydantic schemas right away
     result = []
     for job in jobs:
@@ -233,7 +233,13 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
 @app.post("/api/jobs/scan-ats")
 def scan_ats_jobs(db: Session = Depends(get_db)):
     """Trigger a Boolean search for ATS jobs and process through the pipeline."""
-    raw_jobs = scrape_ats_jobs(num_results=20)
+    try:
+        raw_jobs = scrape_ats_jobs(num_results=20)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+        
+    if not raw_jobs:
+        raise HTTPException(status_code=404, detail="No jobs found from the ATS boolean search. Rate limit possible.")
     
     processed_count = 0
     for r_job in raw_jobs:
