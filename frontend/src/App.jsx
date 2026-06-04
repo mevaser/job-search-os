@@ -49,11 +49,12 @@ function App() {
     }
   }
 
-  const handleScanAts = async () => {
+  const handleScanAts = async (limit = null) => {
     setScanningAts(true)
     setScanProgress('Starting scan...')
     try {
-      const res = await fetch('http://localhost:8000/api/jobs/scan-ats', {
+      const url = limit ? `http://localhost:8000/api/jobs/scan-ats?limit=${limit}` : 'http://localhost:8000/api/jobs/scan-ats';
+      const res = await fetch(url, {
         method: 'POST'
       })
       if (!res.ok) {
@@ -233,7 +234,14 @@ function App() {
               )}
             </button>
             <button 
-              onClick={handleScanAts} 
+              onClick={() => handleScanAts(5)} 
+              disabled={scanningAts || scanning || processing}
+              className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-900 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 flex items-center"
+            >
+              Test Scan (5 Jobs)
+            </button>
+            <button 
+              onClick={() => handleScanAts()} 
               disabled={scanningAts || scanning || processing}
               className="bg-purple-600 hover:bg-purple-500 disabled:bg-purple-900 disabled:text-gray-400 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition-all duration-200 ease-in-out transform hover:-translate-y-0.5 flex items-center"
             >

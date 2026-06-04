@@ -8,7 +8,7 @@ from ddgs import DDGS
 
 load_dotenv()
 
-def scrape_ats_jobs(num_results=5):
+def scrape_ats_jobs(num_results=5, limit=None):
     search_urls = set()
     
     domains = ["boards.greenhouse.io", "comeet.com", "jobs.lever.co", "workday.com"]
@@ -59,6 +59,9 @@ def scrape_ats_jobs(num_results=5):
         if 'workday.com' in url and '/job/' not in url:
             continue
         filtered_urls.append(url)
+        
+    if limit is not None:
+        filtered_urls = filtered_urls[:limit]
         
     yield {"status": f"Filtered down to {len(filtered_urls)} valid job URLs.", "type": "info"}
 

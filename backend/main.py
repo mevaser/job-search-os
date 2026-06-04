@@ -233,12 +233,12 @@ def scan_real_jobs(request: ScanRequest, db: Session = Depends(get_db)):
     }
 
 @app.post("/api/jobs/scan-ats")
-def scan_ats_jobs(db: Session = Depends(get_db)):
+def scan_ats_jobs(limit: int | None = None, db: Session = Depends(get_db)):
     """Trigger a Boolean search for ATS jobs and process through the pipeline with streaming progress."""
     def event_stream():
         processed_count = 0
         try:
-            for event in scrape_ats_jobs(num_results=20):
+            for event in scrape_ats_jobs(num_results=20, limit=limit):
                 if event.get("type") in ["info", "error", "complete"]:
                     yield f"data: {json.dumps(event)}\n\n"
                 elif event.get("type") == "job":

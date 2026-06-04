@@ -44,7 +44,7 @@ def parse_job_html(html_text: str, url: str) -> Optional[dict]:
     
     try:
         response = client.chat.completions.create(
-            model="gemini-1.5-flash",
+            model="gemini-3.5-flash",
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": f"Raw Text:\n{html_text}"}
