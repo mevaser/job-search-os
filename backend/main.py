@@ -75,7 +75,7 @@ def process_mock_jobs(db: Session = Depends(get_db)):
 
 @app.get("/api/jobs")
 def get_jobs(db: Session = Depends(get_db)):
-    jobs = db.query(models.Job).order_by(models.Job.id.desc()).all()
+    jobs = db.query(models.Job).filter(models.Job.is_relevant == True).order_by(models.Job.id.desc()).all()
     # We will just return a simple list of dicts for now to avoid setting up complex Pydantic schemas right away
     result = []
     for job in jobs:
@@ -238,7 +238,8 @@ def scan_ats_jobs(limit: int | None = None, db: Session = Depends(get_db)):
     def event_stream():
         processed_count = 0
         try:
-            for event in scrape_ats_jobs(num_results=20, limit=limit):
+            existing_urls = {j.job_url for j in db.query(models.Job.job_url).all()}
+            for event in scrape_ats_jobs(num_results=20, limit=limit, existing_urls=existing_urls):
                 if event.get("type") in ["info", "error", "complete"]:
                     yield f"data: {json.dumps(event)}\n\n"
                 elif event.get("type") == "job":
@@ -310,7 +311,9 @@ def scan_ats_jobs(limit: int | None = None, db: Session = Depends(get_db)):
                         company=r_job["company"],
                         location=r_job["location"],
                         description=description,
-                        job_url=r_job["job_url"]
+                        job_url=r_job["job_url"],
+                        is_relevant=r_job.get("is_relevant", True),
+                        application_notes=r_job.get("application_notes", "")
                     )
                     db.add(job)
                     db.flush()

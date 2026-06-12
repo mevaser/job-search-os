@@ -94,7 +94,10 @@ function App() {
           }
         }
       }
-      await fetchJobs()
+      // Explicitly wait for the backend to finalize DB commits and close the stream
+      setTimeout(async () => {
+        await fetchJobs()
+      }, 500)
     } catch (err) {
       console.error(err)
       alert(`Error scanning ATS: ${err.message}`)

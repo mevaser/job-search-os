@@ -1,5 +1,7 @@
 import os
 import json
+import logging
+import openai
 from openai import OpenAI
 from pydantic import BaseModel
 from typing import Optional
@@ -11,7 +13,7 @@ class ExtractedJob(BaseModel):
 
 def parse_job_html(html_text: str, url: str) -> Optional[dict]:
     if not html_text or not html_text.strip():
-        print(f"Skipping LLM parsing: HTML content is empty for {url}")
+        logging.info(f"Skipping LLM parsing: HTML content is empty for {url}")
         return None
         
     api_key = os.getenv("GEMINI_API_KEY")
@@ -44,7 +46,7 @@ def parse_job_html(html_text: str, url: str) -> Optional[dict]:
     
     try:
         response = client.chat.completions.create(
-            model="gemini-3.5-flash",
+            model="gemini-2.5-flash",
             messages=[
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": f"Raw Text:\n{html_text}"}
@@ -55,5 +57,23 @@ def parse_job_html(html_text: str, url: str) -> Optional[dict]:
         result = json.loads(raw_content)
         return result
     except Exception as e:
-        print(f"Error parsing with OpenAI SDK: {e}")
-        return None
+        if isinstance(e, openai.RateLimitError) or '429' in str(e):
+            logging.warning("WARNING: Primary model (gemini-2.5-flash) hit rate limit. Falling back to free tier model (gemini-2.5-flash)...")
+            try:
+                response = client.chat.completions.create(
+                    model="gemini-2.5-flash",
+                    messages=[
+                        {"role": "system", "content": prompt},
+                        {"role": "user", "content": f"Raw Text:\n{html_text}"}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+                raw_content = response.choices[0].message.content
+                result = json.loads(raw_content)
+                return result
+            except Exception as inner_e:
+                logging.error(f"Error parsing with OpenAI SDK fallback: {inner_e}")
+                return None
+        else:
+            logging.error(f"Error parsing with OpenAI SDK: {e}")
+            return None

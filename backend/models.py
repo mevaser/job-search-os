@@ -18,6 +18,7 @@ class Job(Base):
     application_status = Column(String, default="Not Applied")
     application_notes = Column(Text, default="")
     is_updated = Column(Boolean, default=False)
+    is_relevant = Column(Boolean, default=True)
 
     analysis = relationship("JobAnalysis", back_populates="job", uselist=False)
     application = relationship("Application", back_populates="job", uselist=False)

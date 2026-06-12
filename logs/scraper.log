@@ -1,0 +1,627 @@
+2026-06-13 01:42:39,448 - INFO - Running ATS search 1/3: site:comeet.com "Petah Tikva" "Graduate" "Data Engineer"
+2026-06-13 01:42:39,759 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Graduate%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:42:39,886 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Petah%20Tikva%22%20%22Graduate%22%20%22Data%20Engineer%22 200
+2026-06-13 01:42:39,966 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Petah+Tikva%22+%22Graduate%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:42:40,595 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Petah+Tikva%22+%22Graduate%22+%22Data+Engineer%22&web=1&searchid=9964624 200
+2026-06-13 01:42:41,055 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:42:41,619 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:42:42,145 - INFO - response: https://search.yahoo.com/search;_ylt=gSZXbdKClC6uLbqBUF__VuxD;_ylu=5r1ODqtEHfJs-_8q7TGNbsqSDPZyIPOB7nIbPFiT2SDb6KQ?p=site%3Acomeet.com+%22Petah+Tikva%22+%22Graduate%22+%22Data+Engineer%22 200
+2026-06-13 01:42:43,007 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Petah%2BTikva%2522%2B%2522Graduate%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOKWstEGIjCUwDBLK1CBFnILONQX84eSpCoXTf996K9-T7bj-ax-NtlfV5aUVlYIHUSi7ouYD3EyAnJSWgFD 429
+2026-06-13 01:42:43,432 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Graduate%22+%22Data+Engineer%22 403
+2026-06-13 01:42:44,063 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:42:44,064 - ERROR - Error for query 'site:comeet.com "Petah Tikva" "Graduate" "Data Engineer"': No results found.
+2026-06-13 01:42:44,065 - INFO - Running ATS search 2/3: site:comeet.com "Netanya" "Entry Level" "Data Engineer"
+2026-06-13 01:42:44,174 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:42:44,376 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Netanya%22%20%22Entry%20Level%22%20%22Data%20Engineer%22 200
+2026-06-13 01:42:44,664 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:42:45,013 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Netanya%22+%22Entry+Level%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:42:45,238 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Entry+Level%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:42:45,350 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:42:45,619 - INFO - response: https://search.yahoo.com/search;_ylt=tcHsL1u6jMJzACgPzbVa78ht;_ylu=i4DgLDud0rrQdpw_5Cuegy8jcDPVxNTCHBeIVdL1EFXVtmI?p=site%3Acomeet.com+%22Netanya%22+%22Entry+Level%22+%22Data+Engineer%22 200
+2026-06-13 01:42:46,444 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Netanya%2522%2B%2522Entry%2BLevel%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOWWstEGIjD6_NYDbTq4ExuGvBVkhz7YvZ92CwVtuE2huKcoAjFXWWara_oslt9Bda4ZdS1-HwAyAnJSWgFD 429
+2026-06-13 01:42:46,580 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Entry+Level%22+%22Data+Engineer%22 403
+2026-06-13 01:42:46,937 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Netanya%22+%22Entry+Level%22+%22Data+Engineer%22&web=1&searchid=1431584 200
+2026-06-13 01:42:46,938 - ERROR - Error for query 'site:comeet.com "Netanya" "Entry Level" "Data Engineer"': No results found.
+2026-06-13 01:42:46,938 - INFO - Running ATS search 3/3: site:boards.greenhouse.io "Tel Aviv" "Student" "GenAI"
+2026-06-13 01:42:47,124 - INFO - response: https://search.yahoo.com/search;_ylt=lBp6n9eZgNuRJICLiO26A0bz;_ylu=Vws4JcoxnuTcaiKcZZW1oueX8ePNjEhHhGB59QBNqWp2YEo?p=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Student%22+%22GenAI%22 200
+2026-06-13 01:42:47,194 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Tel%20Aviv%22%20%22Student%22%20%22GenAI%22 200
+2026-06-13 01:42:48,085 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Student%22+%22GenAI%22&limit=1 200
+2026-06-13 01:42:48,577 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Tel%2BAviv%2522%2B%2522Student%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOeWstEGIjC78svt19E0abnwzXFsXYI-3s4Eeu7xukJTHXLm-k0v4Pn_Ezcrw_W2BnSaObGE31syAnJSWgFD 429
+2026-06-13 01:42:48,701 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:42:49,265 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:42:49,641 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Student%22+%22GenAI%22&web=1&searchid=1681221 200
+2026-06-13 01:42:49,865 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Student%22+%22GenAI%22&source=web 429
+2026-06-13 01:42:49,999 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Student%22+%22GenAI%22 403
+2026-06-13 01:42:51,001 - INFO - DEBUG: Found 4 raw URLs from search before regex filtering.
+2026-06-13 01:42:51,002 - INFO - DEBUG: URL https://boards.greenhouse.io/via/jobs/6715574002 already processed. Skipping.
+2026-06-13 01:42:51,003 - INFO - Processing URL: https://boards.greenhouse.io/tenableinc/jobs/4500304008
+2026-06-13 01:42:55,786 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:55,787 - INFO - Retrying request to /chat/completions in 0.436899 seconds
+2026-06-13 01:42:56,455 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:56,456 - INFO - Retrying request to /chat/completions in 0.836527 seconds
+2026-06-13 01:42:57,417 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:57,418 - WARNING - WARNING: Primary model (gemini-3.5-flash) hit rate limit. Falling back to free tier model (gemini-2.5-flash)...
+2026-06-13 01:42:57,679 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:57,680 - INFO - Retrying request to /chat/completions in 0.380470 seconds
+2026-06-13 01:42:58,326 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:58,327 - INFO - Retrying request to /chat/completions in 0.891797 seconds
+2026-06-13 01:42:59,362 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:42:59,363 - ERROR - Error parsing with OpenAI SDK fallback: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 1.09903245s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}]
+2026-06-13 01:42:59,363 - WARNING - Skipping job due to LLM failure or API quota limits: https://boards.greenhouse.io/tenableinc/jobs/4500304008
+2026-06-13 01:42:59,364 - INFO - Processing URL: https://boards.greenhouse.io/similarweb/jobs/3300020?s=LinkedIn&source=LinkedIn
+2026-06-13 01:43:03,296 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:03,297 - INFO - Retrying request to /chat/completions in 0.386892 seconds
+2026-06-13 01:43:03,801 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:03,802 - INFO - Retrying request to /chat/completions in 0.956980 seconds
+2026-06-13 01:43:04,884 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:04,885 - WARNING - WARNING: Primary model (gemini-3.5-flash) hit rate limit. Falling back to free tier model (gemini-2.5-flash)...
+2026-06-13 01:43:05,305 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:05,306 - INFO - Retrying request to /chat/completions in 0.418020 seconds
+2026-06-13 01:43:05,877 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:05,878 - INFO - Retrying request to /chat/completions in 0.832856 seconds
+2026-06-13 01:43:06,850 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 429 Too Many Requests"
+2026-06-13 01:43:06,850 - ERROR - Error parsing with OpenAI SDK fallback: Error code: 429 - [{'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 53.604083182s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}]
+2026-06-13 01:43:06,851 - WARNING - Skipping job due to LLM failure or API quota limits: https://boards.greenhouse.io/similarweb/jobs/3300020?s=LinkedIn&source=LinkedIn
+2026-06-13 01:43:06,851 - INFO - DEBUG: URL https://boards.greenhouse.io/via/jobs/7326077002 already processed. Skipping.
+2026-06-13 01:52:20,646 - INFO - Running ATS search 1/45: site:workday.com "Israel" "Student" "Backend Developer"
+2026-06-13 01:52:20,783 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:52:21,082 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Backend+Developer%22 403
+2026-06-13 01:52:21,084 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Israel%22%20%22Student%22%20%22Backend%20Developer%22 200
+2026-06-13 01:52:21,381 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:21,950 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:22,195 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:52:22,778 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Backend+Developer%22&web=1&searchid=7535644 200
+2026-06-13 01:52:23,570 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Israel%2522%2B%2522Student%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKabstEGIjB5O3srNxFoeASicO37Q7BYW5bXEKe_r6mtEi_JdWlGVGbMQ9RZZrkbdAX07ogaWfYyAnJSWgFD 429
+2026-06-13 01:52:24,049 - INFO - response: https://search.yahoo.com/search;_ylt=9WlkZZ70LLvp-sOKQgjNoiYe;_ylu=Iq8DTn5oa0uD5ruG1PI78T9i2HG0UPHUlicTjhElCwFkdpg?p=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Backend+Developer%22 200
+2026-06-13 01:52:24,804 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:24,805 - ERROR - Error for query 'site:workday.com "Israel" "Student" "Backend Developer"': No results found.
+2026-06-13 01:52:24,806 - INFO - Running ATS search 2/45: site:comeet.com "Tel Aviv" "Student" "Backend Developer"
+2026-06-13 01:52:25,058 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Tel%20Aviv%22%20%22Student%22%20%22Backend%20Developer%22 200
+2026-06-13 01:52:25,259 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:52:25,850 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:52:25,993 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22 403
+2026-06-13 01:52:26,313 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&web=1&searchid=2933781 200
+2026-06-13 01:52:26,774 - INFO - response: https://search.yahoo.com/search;_ylt=NEYVeTRLIK90_jqNjQLa8RvI;_ylu=yX9BIdhfdaYWurNyaGYfc65hqEnmKNw8cT0mda1dfdr4In4?p=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22 200
+2026-06-13 01:52:27,286 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:27,851 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Tel%2BAviv%2522%2B%2522Student%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKqbstEGIjAZRSeA2-XWPLIX718CTWx0HwS10pemfOPffQ5n_cSjrED87o9xEmXMVEfVMFevsewyAnJSWgFD 429
+2026-06-13 01:52:27,965 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:28,452 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:28,454 - ERROR - Error for query 'site:comeet.com "Tel Aviv" "Student" "Backend Developer"': No results found.
+2026-06-13 01:52:28,454 - INFO - Running ATS search 3/45: site:comeet.com "Herzliya" "No Experience" "Data Engineer"
+2026-06-13 01:52:28,587 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22No+Experience%22+%22Data+Engineer%22 403
+2026-06-13 01:52:28,695 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Herzliya%22+%22No+Experience%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:52:28,714 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Herzliya%22%20%22No%20Experience%22%20%22Data%20Engineer%22 200
+2026-06-13 01:52:28,949 - INFO - response: https://search.yahoo.com/search;_ylt=xCEi_yUL_JxTnrMII0tcDSS4;_ylu=lSdD5P_AP6u-QQZrDyX27BzlsxMgDbOLP0Y03Rnrz8rT8zY?p=site%3Acomeet.com+%22Herzliya%22+%22No+Experience%22+%22Data+Engineer%22 200
+2026-06-13 01:52:29,668 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Herzliya%22+%22No+Experience%22+%22Data+Engineer%22&web=1&searchid=8266017 200
+2026-06-13 01:52:29,786 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:30,282 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:30,924 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Herzliya%2522%2B%2522No%2BExperience%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGK2bstEGIjBluJoJNL02Eh6qpyDRHPq2OfqDBmAxSSQNCAkjHTuCyVLfJbZFfeoRubAmsUwipN8yAnJSWgFD 429
+2026-06-13 01:52:31,032 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:31,323 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22No+Experience%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:52:31,326 - ERROR - Error for query 'site:comeet.com "Herzliya" "No Experience" "Data Engineer"': No results found.
+2026-06-13 01:52:31,326 - INFO - Running ATS search 4/45: site:jobs.lever.co "Herzliya" "No Experience" "Python Developer"
+2026-06-13 01:52:31,546 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22No+Experience%22+%22Python+Developer%22&source=web 429
+2026-06-13 01:52:31,601 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Herzliya%22%20%22No%20Experience%22%20%22Python%20Developer%22 200
+2026-06-13 01:52:31,715 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Herzliya%22+%22No+Experience%22+%22Python+Developer%22&limit=1 200
+2026-06-13 01:52:31,819 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:32,029 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22No+Experience%22+%22Python+Developer%22 403
+2026-06-13 01:52:32,235 - INFO - response: https://search.yahoo.com/search;_ylt=ImhIwwEGWuRtDvGyiGZhtd_b;_ylu=LW9xrKgvus-4pMns_hN4FD8H8WcHs2fvP_5eVN8LklFfOHg?p=site%3Ajobs.lever.co+%22Herzliya%22+%22No+Experience%22+%22Python+Developer%22 200
+2026-06-13 01:52:33,121 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Herzliya%22+%22No+Experience%22+%22Python+Developer%22&web=1&searchid=2914691 200
+2026-06-13 01:52:33,513 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Herzliya%2522%2B%2522No%2BExperience%2522%2B%2522Python%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLCbstEGIjAnxH7RcMG0QHqvoRonfSa60IMYlI9ozdLWkPHwg2Ll_VMg038AG0826ngvTG66CfIyAnJSWgFD 429
+2026-06-13 01:52:33,630 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:34,153 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:35,155 - INFO - Running ATS search 5/45: site:workday.com "Israel" "No Experience" "Python Developer"
+2026-06-13 01:52:35,366 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Israel%22+%22No+Experience%22+%22Python+Developer%22&limit=1 200
+2026-06-13 01:52:35,462 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Israel%22%20%22No%20Experience%22%20%22Python%20Developer%22 200
+2026-06-13 01:52:35,800 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Israel%2522%2B%2522No%2BExperience%2522%2B%2522Python%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLKbstEGIjAbAFsaEhzdzXZ0J6v4-Rttm8eDNW6HWFdJ-7xJNGwObc5lcK_RLfbwVbnfMOqFjykyAnJSWgFD 429
+2026-06-13 01:52:35,907 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:36,354 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Israel%22+%22No+Experience%22+%22Python+Developer%22&web=1&searchid=3869269 200
+2026-06-13 01:52:36,580 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Israel%22+%22No+Experience%22+%22Python+Developer%22&source=web 429
+2026-06-13 01:52:36,766 - INFO - response: https://search.yahoo.com/search;_ylt=hODBaKGikPFNNVCpgeMrFFJF;_ylu=Tw4yI0EQKN8TVBJBF2GJI01xPqRDaMCGvBjjTvBZ9lRBsvQ?p=site%3Aworkday.com+%22Israel%22+%22No+Experience%22+%22Python+Developer%22 200
+2026-06-13 01:52:37,253 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:37,772 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:38,065 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Israel%22+%22No+Experience%22+%22Python+Developer%22 403
+2026-06-13 01:52:38,065 - ERROR - Error for query 'site:workday.com "Israel" "No Experience" "Python Developer"': No results found.
+2026-06-13 01:52:38,066 - INFO - Running ATS search 6/45: site:comeet.com "Petah Tikva" "Junior" "GenAI"
+2026-06-13 01:52:38,290 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22GenAI%22&source=web 429
+2026-06-13 01:52:38,332 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Petah%20Tikva%22%20%22Junior%22%20%22GenAI%22 200
+2026-06-13 01:52:38,507 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22GenAI%22&limit=1 200
+2026-06-13 01:52:38,762 - INFO - response: https://search.yahoo.com/search;_ylt=U89p0CA-C2ycKy56uACilpxW;_ylu=eu4Q5a9K6NxgA56SEOsXGVV3nLrdutYxxyRtP20cepH1s68?p=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22GenAI%22 200
+2026-06-13 01:52:39,401 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22GenAI%22&web=1&searchid=7368069 200
+2026-06-13 01:52:39,522 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:40,065 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Petah%2BTikva%2522%2B%2522Junior%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLebstEGIjCpzsP9QgyJEAUwzpkSMdROH1dYRKQGEVWnMF8HeNNVH2X9bAuSsl4ih4TnHGJ5rVoyAnJSWgFD 429
+2026-06-13 01:52:40,180 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:40,684 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:40,824 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22GenAI%22 403
+2026-06-13 01:52:40,825 - ERROR - Error for query 'site:comeet.com "Petah Tikva" "Junior" "GenAI"': No results found.
+2026-06-13 01:52:40,825 - INFO - Running ATS search 7/45: site:comeet.com "Netanya" "Junior" "Data Analyst"
+2026-06-13 01:52:40,835 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:52:41,010 - INFO - response: https://search.yahoo.com/search;_ylt=yJrYkszP0QxPyduOYrptGnEb;_ylu=LxeVc26TqfH6UcVxbS52qxqm2nN7_zIpskBFEkvc4TRar-Y?p=site%3Acomeet.com+%22Netanya%22+%22Junior%22+%22Data+Analyst%22 200
+2026-06-13 01:52:41,067 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Netanya%22%20%22Junior%22%20%22Data%20Analyst%22 200
+2026-06-13 01:52:41,881 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Netanya%2522%2B%2522Junior%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLibstEGIjA_e0pJpaCscGclDP_0C5GfNoKMu1w-P3FIAZRhQdPG9bPvzKW76gdRn9tLq2kuGXYyAnJSWgFD 429
+2026-06-13 01:52:42,103 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:52:42,429 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&web=1&searchid=5713701 200
+2026-06-13 01:52:42,535 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:42,722 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:43,295 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:43,426 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Junior%22+%22Data+Analyst%22 403
+2026-06-13 01:52:43,427 - ERROR - Error for query 'site:comeet.com "Netanya" "Junior" "Data Analyst"': No results found.
+2026-06-13 01:52:43,427 - INFO - Running ATS search 8/45: site:workday.com "Herzliya" "Entry Level" "Data Engineer"
+2026-06-13 01:52:43,543 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:43,695 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Herzliya%22%20%22Entry%20Level%22%20%22Data%20Engineer%22 200
+2026-06-13 01:52:43,888 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Herzliya%22+%22Entry+Level%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:52:44,377 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:44,741 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Herzliya%22+%22Entry+Level%22+%22Data+Engineer%22&web=1&searchid=7548910 200
+2026-06-13 01:52:45,176 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Herzliya%2522%2B%2522Entry%2BLevel%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLybstEGIjDWYEw4DDajUGRPxlADrLHa6d1nac-JBYYlyXygWeCiih7gxgwSNpkmk8c6C3gNew4yAnJSWgFD 429
+2026-06-13 01:52:45,387 - INFO - response: https://search.yahoo.com/search;_ylt=1qCs9Mfl2MNa-nXKhKqhEOF0;_ylu=7q9oICVMA-zldsfDdggqq3OFEt6joVGFEO0na0_ah25anPI?p=site%3Aworkday.com+%22Herzliya%22+%22Entry+Level%22+%22Data+Engineer%22 200
+2026-06-13 01:52:46,104 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Herzliya%22+%22Entry+Level%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:52:46,207 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:46,419 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Herzliya%22+%22Entry+Level%22+%22Data+Engineer%22 403
+2026-06-13 01:52:46,420 - ERROR - Error for query 'site:workday.com "Herzliya" "Entry Level" "Data Engineer"': No results found.
+2026-06-13 01:52:46,420 - INFO - Running ATS search 9/45: site:comeet.com "Herzliya" "Entry Level" "Big Data Specialist"
+2026-06-13 01:52:46,526 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:46,661 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Herzliya%22%20%22Entry%20Level%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:52:46,813 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Herzliya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:52:47,427 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Herzliya%2522%2B%2522Entry%2BLevel%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGL6bstEGIjDD8Q9gLEUzQIq7Xod2eDqEP2xfJzW2NKHCOMQs8OjDEq4sIUNg3TGZnoUrbgm4Vk0yAnJSWgFD 429
+2026-06-13 01:52:47,645 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:52:47,841 - INFO - response: https://search.yahoo.com/search;_ylt=NRSvbeMBvJAYKZLfWA1IlDOy;_ylu=fP2I8MasJ30PRmHzNa2aQdYJjlAQXAxa537-ogaemK8lah0?p=site%3Acomeet.com+%22Herzliya%22+%22Entry+Level%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:52:48,286 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:48,797 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:49,156 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Herzliya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&web=1&searchid=4457698 200
+2026-06-13 01:52:49,288 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22Entry+Level%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:52:49,289 - ERROR - Error for query 'site:comeet.com "Herzliya" "Entry Level" "Big Data Specialist"': No results found.
+2026-06-13 01:52:49,289 - INFO - Running ATS search 10/45: site:workday.com "Israel" "Student" "Big Data Specialist"
+2026-06-13 01:52:49,298 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:52:49,539 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Israel%22%20%22Student%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:52:49,604 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Big+Data+Specialist%22&web=1&searchid=7924379 200
+2026-06-13 01:52:49,825 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:52:50,485 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Israel%2522%2B%2522Student%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGMGbstEGIjAubBgWsPo3r-fCyf4LneSif64Ozjl3k-JyRDzp6je8296W5x7J8Xk-z31nCl-OcLYyAnJSWgFD 429
+2026-06-13 01:52:50,668 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:52:50,780 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:51,279 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:51,491 - INFO - response: https://search.yahoo.com/search;_ylt=tmBkemYWbO6URaVppGtm2EuZ;_ylu=LHbOL9C38um6K49u7a1PF5eZgpVoz3M3FhW119GVI3PFsTA?p=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:52:51,943 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Israel%22+%22Student%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:52:51,944 - ERROR - Error for query 'site:workday.com "Israel" "Student" "Big Data Specialist"': No results found.
+2026-06-13 01:52:51,944 - INFO - Running ATS search 11/45: site:boards.greenhouse.io "Israel" "Entry Level" "GenAI"
+2026-06-13 01:52:51,951 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22GenAI%22&limit=1 200
+2026-06-13 01:52:52,133 - INFO - response: https://search.yahoo.com/search;_ylt=kGWk9XUokyuTxiOfPujvfUjb;_ylu=lzAygXcvD3SBBzO7vKqIab47VqXbbB3u9CMYL0TdOTtDnrQ?p=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22GenAI%22 200
+2026-06-13 01:52:52,195 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Israel%22%20%22Entry%20Level%22%20%22GenAI%22 200
+2026-06-13 01:52:52,764 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22GenAI%22&source=web 429
+2026-06-13 01:52:52,903 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22GenAI%22 403
+2026-06-13 01:52:53,514 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Israel%2522%2B%2522Entry%2BLevel%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGMSbstEGIjDaDDglRXPI3J6xloMtPcx0oML9EMA0ajMIBStHP05f0aaUWctDN8uEGQHKBfi-VoMyAnJSWgFD 429
+2026-06-13 01:52:53,634 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:54,413 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:54,722 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22GenAI%22&web=1&searchid=5354876 200
+2026-06-13 01:52:55,731 - INFO - Running ATS search 12/45: site:jobs.lever.co "Tel Aviv" "Student" "Backend Developer"
+2026-06-13 01:52:55,738 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:52:55,979 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Tel%20Aviv%22%20%22Student%22%20%22Backend%20Developer%22 200
+2026-06-13 01:52:56,175 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Tel%2BAviv%2522%2B%2522Student%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGMebstEGIjBiuuaKs0yDx9u5TUN2nGM-FFXQl2Zyd3WIxExwrYrjumVsdIRk0lmx4xLiEhu8-esyAnJSWgFD 429
+2026-06-13 01:52:56,380 - INFO - response: https://search.yahoo.com/search;_ylt=34rayyLjyfVSb5-YWOthgS6y;_ylu=kQaS3C5IolOUseD4yy3QwmWXiUHlG6J9-SiqPpvRpJJH0HU?p=site%3Ajobs.lever.co+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22 200
+2026-06-13 01:52:56,884 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22 403
+2026-06-13 01:52:57,107 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:52:57,239 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:52:57,792 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:52:58,126 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Tel+Aviv%22+%22Student%22+%22Backend+Developer%22&web=1&searchid=2028595 200
+2026-06-13 01:52:59,138 - INFO - Running ATS search 13/45: site:comeet.com "Petah Tikva" "Junior" "Data Analyst"
+2026-06-13 01:52:59,327 - INFO - response: https://search.yahoo.com/search;_ylt=7tcXfW4rr9IGTIJkZRQa5-wp;_ylu=z4lnWfNgv8PA94iMSLfW6OJVqPoSIMgekmt8U-Bs4e9f9Xg?p=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22Data+Analyst%22 200
+2026-06-13 01:52:59,405 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Petah%20Tikva%22%20%22Junior%22%20%22Data%20Analyst%22 200
+2026-06-13 01:52:59,514 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:52:59,880 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:53:00,203 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:00,315 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:00,833 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:01,432 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Petah%2BTikva%2522%2B%2522Junior%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGMybstEGIjAeYktleRIBRgDQObay4kpBk_DVPw0_oDf_V6wE4ECjIOtK913pziH365i7xO6N02wyAnJSWgFD 429
+2026-06-13 01:53:01,567 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22Data+Analyst%22 403
+2026-06-13 01:53:02,048 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Petah+Tikva%22+%22Junior%22+%22Data+Analyst%22&web=1&searchid=7511648 200
+2026-06-13 01:53:03,062 - INFO - Running ATS search 14/45: site:jobs.lever.co "Netanya" "No Experience" "Data Analyst"
+2026-06-13 01:53:03,313 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Netanya%22%20%22No%20Experience%22%20%22Data%20Analyst%22 200
+2026-06-13 01:53:03,455 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Netanya%22+%22No+Experience%22+%22Data+Analyst%22&web=1&searchid=6996511 200
+2026-06-13 01:53:03,496 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Netanya%22+%22No+Experience%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:53:03,630 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22No+Experience%22+%22Data+Analyst%22 403
+2026-06-13 01:53:03,847 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22No+Experience%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:53:03,960 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:04,458 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:05,032 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Netanya%2522%2B%2522No%2BExperience%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGNCbstEGIjCtsXbCjMkQxVNkIK976a2gcrJuqRaIPqkoDZo5qHWAhWdUUS8Db1fFl4AsseydEFUyAnJSWgFD 429
+2026-06-13 01:53:05,217 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:05,404 - INFO - response: https://search.yahoo.com/search;_ylt=lpgyqAPJrevcZnPJBY13B7Np;_ylu=2Kbb2UJ1ZNRASe6kEBdKQ6NEL8znEwKMOlGnNRSxZlpFXfE?p=site%3Ajobs.lever.co+%22Netanya%22+%22No+Experience%22+%22Data+Analyst%22 200
+2026-06-13 01:53:06,842 - INFO - Running ATS search 15/45: site:boards.greenhouse.io "Israel" "Entry Level" "Data Analyst"
+2026-06-13 01:53:06,948 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:07,090 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:53:07,112 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Israel%22%20%22Entry%20Level%22%20%22Data%20Analyst%22 200
+2026-06-13 01:53:07,330 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:53:07,520 - INFO - response: https://search.yahoo.com/search;_ylt=bH-kTxEkSoTl_DXRbM6oU6q8;_ylu=v2sgueG29eFOnuJqEj_qPbF0iSCidpby3Glrd4vuIdtAolw?p=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22Data+Analyst%22 200
+2026-06-13 01:53:07,983 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22Data+Analyst%22 403
+2026-06-13 01:53:08,331 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Israel%22+%22Entry+Level%22+%22Data+Analyst%22&web=1&searchid=4208400 200
+2026-06-13 01:53:08,452 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:09,232 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:09,843 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Israel%2522%2B%2522Entry%2BLevel%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGNSbstEGIjDwpnwjXEUi96RT18QaVUlXY1BFfZrdHO7G9nsysMdEgkdPWR08RQI8VRWoZ536kkMyAnJSWgFD 429
+2026-06-13 01:53:09,846 - ERROR - Error for query 'site:boards.greenhouse.io "Israel" "Entry Level" "Data Analyst"': No results found.
+2026-06-13 01:53:09,846 - INFO - Running ATS search 16/45: site:comeet.com "Herzliya" "Student" "Backend Developer"
+2026-06-13 01:53:09,951 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:10,131 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Herzliya%22%20%22Student%22%20%22Backend%20Developer%22 200
+2026-06-13 01:53:10,241 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Herzliya%22+%22Student%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:53:10,807 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Herzliya%2522%2B%2522Student%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGNWbstEGIjB2z49RFxTpaqOyF8t6nfoUOS6AIVIAAOOvcvwgY-LZ8nQK0nRGbNE1cyv-UwFPwTIyAnJSWgFD 429
+2026-06-13 01:53:10,994 - INFO - response: https://search.yahoo.com/search;_ylt=FXKYfyBMIaGSntwt0_6fzUwS;_ylu=gs8ooXLkqfS0QnjuMjQjTS39UljibFVBgyHUy3PrUB_7p7k?p=site%3Acomeet.com+%22Herzliya%22+%22Student%22+%22Backend+Developer%22 200
+2026-06-13 01:53:11,641 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22Student%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:53:11,996 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Herzliya%22+%22Student%22+%22Backend+Developer%22&web=1&searchid=1108329 200
+2026-06-13 01:53:12,144 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Herzliya%22+%22Student%22+%22Backend+Developer%22 403
+2026-06-13 01:53:12,263 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:12,767 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:12,768 - ERROR - Error for query 'site:comeet.com "Herzliya" "Student" "Backend Developer"': No results found.
+2026-06-13 01:53:12,769 - INFO - Running ATS search 17/45: site:workday.com "Netanya" "Graduate" "AI Engineer"
+2026-06-13 01:53:13,031 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Netanya%22%20%22Graduate%22%20%22AI%20Engineer%22 200
+2026-06-13 01:53:13,131 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22AI+Engineer%22&web=1&searchid=7411983 200
+2026-06-13 01:53:13,138 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22AI+Engineer%22&limit=1 200
+2026-06-13 01:53:13,328 - INFO - response: https://search.yahoo.com/search;_ylt=3x2HszWmiIQNvRVYgiqDOguz;_ylu=ZEbaYHoZpXhAVKsUIFxzGF9yMiSlmhgctKVe44p_tTXg-28?p=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22AI+Engineer%22 200
+2026-06-13 01:53:14,010 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22AI+Engineer%22 403
+2026-06-13 01:53:14,427 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Netanya%2522%2B%2522Graduate%2522%2B%2522AI%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGNmbstEGIjBlj1rbVoKOEB9ZyrK57BdVpMp6hUcBIwTtP9T7MB5X4ZweZ5mzqZ8ipYkv4x9ypU0yAnJSWgFD 429
+2026-06-13 01:53:14,646 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22AI+Engineer%22&source=web 429
+2026-06-13 01:53:14,749 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:14,957 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:15,505 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:15,506 - ERROR - Error for query 'site:workday.com "Netanya" "Graduate" "AI Engineer"': No results found.
+2026-06-13 01:53:15,507 - INFO - Running ATS search 18/45: site:workday.com "Petah Tikva" "Graduate" "Machine Learning"
+2026-06-13 01:53:15,514 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Petah+Tikva%22+%22Graduate%22+%22Machine+Learning%22&limit=1 200
+2026-06-13 01:53:15,614 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:15,753 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Petah%20Tikva%22%20%22Graduate%22%20%22Machine%20Learning%22 200
+2026-06-13 01:53:16,000 - INFO - response: https://search.yahoo.com/search;_ylt=aQJH8HO1LS52HFx6mnwAIZWb;_ylu=4vXBD_QLeksUD8Gv-Qkc-b8thmUIASpkOVp-C3aFAXuvz68?p=site%3Aworkday.com+%22Petah+Tikva%22+%22Graduate%22+%22Machine+Learning%22 200
+2026-06-13 01:53:16,592 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Graduate%22+%22Machine+Learning%22&source=web 429
+2026-06-13 01:53:16,706 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:17,206 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:17,553 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Petah+Tikva%22+%22Graduate%22+%22Machine+Learning%22&web=1&searchid=1683676 200
+2026-06-13 01:53:17,699 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Graduate%22+%22Machine+Learning%22 403
+2026-06-13 01:53:18,209 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Petah%2BTikva%2522%2B%2522Graduate%2522%2B%2522Machine%2BLearning%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGN2bstEGIjAfIpWtaHMtVaL4SLNu_gfHOwdln6HwPOG53dN4TVQ5PiC3XSDqIaTQCqB4CJrks6gyAnJSWgFD 429
+2026-06-13 01:53:18,211 - ERROR - Error for query 'site:workday.com "Petah Tikva" "Graduate" "Machine Learning"': No results found.
+2026-06-13 01:53:18,211 - INFO - Running ATS search 19/45: site:jobs.lever.co "Israel" "Student" "Backend Developer"
+2026-06-13 01:53:18,220 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Israel%22+%22Student%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:53:18,381 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Israel%22+%22Student%22+%22Backend+Developer%22&web=1&searchid=1898011 200
+2026-06-13 01:53:18,449 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Israel%22%20%22Student%22%20%22Backend%20Developer%22 200
+2026-06-13 01:53:18,561 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:18,774 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Student%22+%22Backend+Developer%22 403
+2026-06-13 01:53:19,137 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Israel%2522%2B%2522Student%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGN6bstEGIjA5BSEmH7x6PYtlJRSh3wP_SjHl-it3ELZhUi8scDo1BR2c-hUcl0u2rN2-x0G9JskyAnJSWgFD 429
+2026-06-13 01:53:19,322 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:19,800 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:20,022 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Student%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:53:20,290 - INFO - response: https://search.yahoo.com/search;_ylt=ToixMG1ZT41Rqpwewz1-VmdW;_ylu=DPvdoO18AOyFZXdqN3SYv1oElaLCrQw-1BL5PasUDnoJKtk?p=site%3Ajobs.lever.co+%22Israel%22+%22Student%22+%22Backend+Developer%22 200
+2026-06-13 01:53:21,529 - INFO - Running ATS search 20/45: site:comeet.com "Netanya" "Graduate" "GenAI"
+2026-06-13 01:53:21,668 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Graduate%22+%22GenAI%22 403
+2026-06-13 01:53:21,734 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Netanya%22+%22Graduate%22+%22GenAI%22&limit=1 200
+2026-06-13 01:53:21,796 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Netanya%22%20%22Graduate%22%20%22GenAI%22 200
+2026-06-13 01:53:22,301 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Netanya%2522%2B%2522Graduate%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOGbstEGIjAMrKXhzf_Wpc43mIMJwkp9TDROv5gjGEW3xBHOQTBP5wKx1Ad8kxxwE3FMAK91Y24yAnJSWgFD 429
+2026-06-13 01:53:22,612 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Netanya%22+%22Graduate%22+%22GenAI%22&web=1&searchid=1124540 200
+2026-06-13 01:53:22,987 - INFO - response: https://search.yahoo.com/search;_ylt=VS_AYmyVFeS5Qu6hLIZBcULu;_ylu=acY963oEprI-Z-MXqJm2PbeUY1WCZ0nGXflDQM0wTz9RifQ?p=site%3Acomeet.com+%22Netanya%22+%22Graduate%22+%22GenAI%22 200
+2026-06-13 01:53:23,489 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:23,983 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:24,204 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Netanya%22+%22Graduate%22+%22GenAI%22&source=web 429
+2026-06-13 01:53:24,529 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:24,530 - ERROR - Error for query 'site:comeet.com "Netanya" "Graduate" "GenAI"': No results found.
+2026-06-13 01:53:24,531 - INFO - Running ATS search 21/45: site:comeet.com "Tel Aviv" "Student" "Python Developer"
+2026-06-13 01:53:24,640 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:24,731 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Python+Developer%22&limit=1 200
+2026-06-13 01:53:24,815 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Tel%20Aviv%22%20%22Student%22%20%22Python%20Developer%22 200
+2026-06-13 01:53:25,081 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Python+Developer%22&source=web 429
+2026-06-13 01:53:25,216 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:25,714 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:26,206 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Tel%2BAviv%2522%2B%2522Student%2522%2B%2522Python%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOWbstEGIjDobXx8EFOpnGsm0ES_iNo3RQlWRdPx1h2_OWwC88VS0bcRvIEI7UoI3RoKOpLwcVIyAnJSWgFD 429
+2026-06-13 01:53:26,537 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Python+Developer%22&web=1&searchid=2605406 200
+2026-06-13 01:53:26,675 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Python+Developer%22 403
+2026-06-13 01:53:26,865 - INFO - response: https://search.yahoo.com/search;_ylt=Aw-R5cqOJHRapqDfW_wnRWkM;_ylu=6Mg9WTXdmH45JXAZCBu_xehvk54dXiCul40w75qPWArq1dA?p=site%3Acomeet.com+%22Tel+Aviv%22+%22Student%22+%22Python+Developer%22 200
+2026-06-13 01:53:27,283 - ERROR - Error for query 'site:comeet.com "Tel Aviv" "Student" "Python Developer"': No results found.
+2026-06-13 01:53:27,283 - INFO - Running ATS search 22/45: site:jobs.lever.co "Petah Tikva" "Entry Level" "Backend Developer"
+2026-06-13 01:53:27,536 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:53:27,564 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Petah%20Tikva%22%20%22Entry%20Level%22%20%22Backend%20Developer%22 200
+2026-06-13 01:53:27,647 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Petah%2BTikva%2522%2B%2522Entry%2BLevel%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOabstEGIjDzMFQYYKArlacwHLcO6hAty-2xjB9oKKU3XkaoBBHYDiJV3F5drvaXZya4ttRgnm4yAnJSWgFD 429
+2026-06-13 01:53:27,991 - INFO - response: https://search.yahoo.com/search;_ylt=xjD9rztz2wqp__fN6s6Dm01l;_ylu=76TnFTcJMU-rTjqilGmWgXEtQNQnqe_vMzd33KQfoPsnX0g?p=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Backend+Developer%22 200
+2026-06-13 01:53:28,739 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Backend+Developer%22&web=1&searchid=3799059 200
+2026-06-13 01:53:28,979 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:53:29,132 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:29,637 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:29,747 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:29,958 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Backend+Developer%22 403
+2026-06-13 01:53:29,959 - ERROR - Error for query 'site:jobs.lever.co "Petah Tikva" "Entry Level" "Backend Developer"': No results found.
+2026-06-13 01:53:29,959 - INFO - Running ATS search 23/45: site:comeet.com "Israel" "Junior" "Data Analyst"
+2026-06-13 01:53:30,157 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Israel%22+%22Junior%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:53:30,180 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Israel%22+%22Junior%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:53:30,215 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Israel%22%20%22Junior%22%20%22Data%20Analyst%22 200
+2026-06-13 01:53:30,579 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Israel%2522%2B%2522Junior%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGOmbstEGIjCmMiZpHD8VQcnZtCeSMGu8JApZo4PX5hHyAaJwSLjtfEMFAvVo0ZeJVI9tviLxfsIyAnJSWgFD 429
+2026-06-13 01:53:30,710 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Israel%22+%22Junior%22+%22Data+Analyst%22 403
+2026-06-13 01:53:30,944 - INFO - response: https://search.yahoo.com/search;_ylt=6-jRaPqk_xS6u0HvLcjiFq6j;_ylu=7OR3Hcee93S7fYvrCLxWwXKpxw4ZCxzADZ2yCvqseg1IRCI?p=site%3Acomeet.com+%22Israel%22+%22Junior%22+%22Data+Analyst%22 200
+2026-06-13 01:53:31,647 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Israel%22+%22Junior%22+%22Data+Analyst%22&web=1&searchid=1744764 200
+2026-06-13 01:53:31,779 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:32,269 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:32,377 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:33,455 - INFO - Running ATS search 24/45: site:jobs.lever.co "Netanya" "Junior" "Data Analyst"
+2026-06-13 01:53:33,463 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&limit=1 200
+2026-06-13 01:53:33,702 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Netanya%22%20%22Junior%22%20%22Data%20Analyst%22 200
+2026-06-13 01:53:33,785 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&web=1&searchid=6764719 200
+2026-06-13 01:53:34,004 - INFO - response: https://search.yahoo.com/search;_ylt=QGW6v5FnHQ1N8dRN2qsSQS_K;_ylu=m54rIN1OZ1434lsYKJ9R7VXXUh6dSmJD_C0cQakB7rz2Bwg?p=site%3Ajobs.lever.co+%22Netanya%22+%22Junior%22+%22Data+Analyst%22 200
+2026-06-13 01:53:34,526 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Junior%22+%22Data+Analyst%22 403
+2026-06-13 01:53:34,747 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Junior%22+%22Data+Analyst%22&source=web 429
+2026-06-13 01:53:35,258 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Netanya%2522%2B%2522Junior%2522%2B%2522Data%2BAnalyst%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGO6bstEGIjAcPD679toWWKYgNiFSAUzEjDhq-RPb9dsIEqtnm_54D1GJC2BY3kYSE5XJGZCmBRsyAnJSWgFD 429
+2026-06-13 01:53:35,374 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:35,866 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:36,868 - INFO - Running ATS search 25/45: site:workday.com "Petah Tikva" "Entry Level" "Big Data Specialist"
+2026-06-13 01:53:36,990 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:37,149 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Petah%20Tikva%22%20%22Entry%20Level%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:53:37,493 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:38,822 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:53:39,155 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:53:39,486 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:39,708 - INFO - response: https://search.yahoo.com/search;_ylt=oDVlMuyVOx5zud40-rxo8p7i;_ylu=BplFPDjA_BdmpVlpkCfs3i_LpWV1ndnorTJmD80AZ2CGDLc?p=site%3Aworkday.com+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:53:40,324 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:53:40,677 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&web=1&searchid=3984861 200
+2026-06-13 01:53:41,100 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Petah%2BTikva%2522%2B%2522Entry%2BLevel%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGPSbstEGIjA4km-hRYrJ3k5eDvEqfgBoTXt4oOgRf9x9EMZnChjcqMBVfN0CZMQ4xRRkbb6WsWsyAnJSWgFD 429
+2026-06-13 01:53:41,102 - ERROR - Error for query 'site:workday.com "Petah Tikva" "Entry Level" "Big Data Specialist"': No results found.
+2026-06-13 01:53:41,103 - INFO - Running ATS search 26/45: site:jobs.lever.co "Israel" "Graduate" "GenAI"
+2026-06-13 01:53:41,209 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:41,367 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Israel%22%20%22Graduate%22%20%22GenAI%22 200
+2026-06-13 01:53:41,469 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22GenAI%22&limit=1 200
+2026-06-13 01:53:42,021 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Israel%2522%2B%2522Graduate%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGPWbstEGIjBTzLK9fxclVEr_FjIEz5I84fxGFCFvLA87DkISlQzqx__tebQzi7SkSTz20fjuAgYyAnJSWgFD 429
+2026-06-13 01:53:42,327 - INFO - response: https://search.yahoo.com/search;_ylt=K7--WbizqY83-lkjSawz9csy;_ylu=bGxpk9EKNe87V0fsGQQ5IaxTG_Foc3E6wVh2h5TxjCuCSZs?p=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22GenAI%22 200
+2026-06-13 01:53:43,044 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22GenAI%22&source=web 429
+2026-06-13 01:53:43,183 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22GenAI%22 403
+2026-06-13 01:53:43,290 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:43,783 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:44,110 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22GenAI%22&web=1&searchid=9037973 200
+2026-06-13 01:53:45,116 - INFO - Running ATS search 27/45: site:jobs.lever.co "Petah Tikva" "Entry Level" "Data Engineer"
+2026-06-13 01:53:45,360 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Petah%20Tikva%22%20%22Entry%20Level%22%20%22Data%20Engineer%22 200
+2026-06-13 01:53:45,441 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Data+Engineer%22&web=1&searchid=1747151 200
+2026-06-13 01:53:45,500 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:53:45,602 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:46,094 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Petah%2BTikva%2522%2B%2522Entry%2BLevel%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGPmbstEGIjA-3lR4Ck_ho8pkw9fWwIWVbijPw1EwpOVxz8u21tnca3t3qdou5gGUd046rXlf0rYyAnJSWgFD 429
+2026-06-13 01:53:46,224 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:46,732 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:46,947 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:53:47,089 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Data+Engineer%22 403
+2026-06-13 01:53:47,275 - INFO - response: https://search.yahoo.com/search;_ylt=fRkg-_AeS5saiugGb7ADD1hW;_ylu=-3U3yVS-nsK8Lcy7nMONaSM5jlR55Yi8L3xQxwSmmmT_zCw?p=site%3Ajobs.lever.co+%22Petah+Tikva%22+%22Entry+Level%22+%22Data+Engineer%22 200
+2026-06-13 01:53:47,805 - ERROR - Error for query 'site:jobs.lever.co "Petah Tikva" "Entry Level" "Data Engineer"': No results found.
+2026-06-13 01:53:47,806 - INFO - Running ATS search 28/45: site:jobs.lever.co "Israel" "Graduate" "Data Engineer"
+2026-06-13 01:53:47,947 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22Data+Engineer%22 403
+2026-06-13 01:53:48,001 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:53:48,069 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Israel%22%20%22Graduate%22%20%22Data%20Engineer%22 200
+2026-06-13 01:53:48,289 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:53:48,395 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:48,965 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Israel%2522%2B%2522Graduate%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGPybstEGIjC_ciIi268D5aNBP6m-qGry9hFKUKJIQTXZuSkInoj2tRQO_TcogXIgPFoQ2D2eOPkyAnJSWgFD 429
+2026-06-13 01:53:49,247 - INFO - response: https://search.yahoo.com/search;_ylt=VAQ9nx1RDNPaWmT2MxbOdqfg;_ylu=I2949SUswrzzn5I8bQ7ZhPUrOTt5_ywvVebWHANHMnM5UEg?p=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22Data+Engineer%22 200
+2026-06-13 01:53:50,012 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:50,510 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:50,839 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Israel%22+%22Graduate%22+%22Data+Engineer%22&web=1&searchid=6786047 200
+2026-06-13 01:53:51,847 - INFO - Running ATS search 29/45: site:boards.greenhouse.io "Netanya" "Junior" "Big Data Specialist"
+2026-06-13 01:53:52,069 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Netanya%22+%22Junior%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:53:52,075 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Junior%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:53:52,110 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Netanya%22%20%22Junior%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:53:52,223 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:52,483 - INFO - response: https://search.yahoo.com/search;_ylt=o5BxO1MFASCgHk42s4GATPuT;_ylu=oGwa1r13myGWnf7WMFEzzelpnZOZItglJx1IFHxvmEhwmnQ?p=site%3Aboards.greenhouse.io+%22Netanya%22+%22Junior%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:53:53,226 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Netanya%22+%22Junior%22+%22Big+Data+Specialist%22&web=1&searchid=6537248 200
+2026-06-13 01:53:53,378 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:53,881 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:54,292 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Netanya%2522%2B%2522Junior%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGIGcstEGIjCthTuBtn4mu_9BXW6Gspk4V8n4hUNT7z9G8r57o9IAagCpWUl_o0RgJbQrPFEA9YYyAnJSWgFD 429
+2026-06-13 01:53:54,580 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Junior%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:53:55,581 - INFO - Running ATS search 30/45: site:workday.com "Netanya" "Entry Level" "Python Developer"
+2026-06-13 01:53:55,775 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Netanya%22+%22Entry+Level%22+%22Python+Developer%22&limit=1 200
+2026-06-13 01:53:55,800 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Entry+Level%22+%22Python+Developer%22&source=web 429
+2026-06-13 01:53:55,875 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Netanya%22%20%22Entry%20Level%22%20%22Python%20Developer%22 200
+2026-06-13 01:53:55,985 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:53:56,487 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:53:57,062 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Netanya%2522%2B%2522Entry%2BLevel%2522%2B%2522Python%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGIScstEGIjCPBjLkUwM5886Aqw89NabuVyzOkSbrvYPF6DCAdO1p3CGXyT3guZt3Vt34hyEE5wUyAnJSWgFD 429
+2026-06-13 01:53:57,196 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Entry+Level%22+%22Python+Developer%22 403
+2026-06-13 01:53:57,515 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Netanya%22+%22Entry+Level%22+%22Python+Developer%22&web=1&searchid=3824038 200
+2026-06-13 01:53:57,849 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:58,115 - INFO - response: https://search.yahoo.com/search;_ylt=XF51fDJCuDDuARVvEsG5INW-;_ylu=vMDT6roq7YTgFBd3V3UcYBVaVA5A8gt5fSn3jDw9ZogOQ8w?p=site%3Aworkday.com+%22Netanya%22+%22Entry+Level%22+%22Python+Developer%22 200
+2026-06-13 01:53:58,359 - ERROR - Error for query 'site:workday.com "Netanya" "Entry Level" "Python Developer"': No results found.
+2026-06-13 01:53:58,360 - INFO - Running ATS search 31/45: site:workday.com "Tel Aviv" "No Experience" "Machine Learning"
+2026-06-13 01:53:58,541 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:53:58,617 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Tel%20Aviv%22%20%22No%20Experience%22%20%22Machine%20Learning%22 200
+2026-06-13 01:53:58,833 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Tel+Aviv%22+%22No+Experience%22+%22Machine+Learning%22&limit=1 200
+2026-06-13 01:53:59,186 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Tel%2BAviv%2522%2B%2522No%2BExperience%2522%2B%2522Machine%2BLearning%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGIacstEGIjBb6irT0uw0f4NQjaOPVnGJssphMPK8hiHiobU1mdzeKpJtYL0cgdFNH4VUYdV1l1oyAnJSWgFD 429
+2026-06-13 01:53:59,541 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Tel+Aviv%22+%22No+Experience%22+%22Machine+Learning%22&web=1&searchid=6404784 200
+2026-06-13 01:54:00,545 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Tel+Aviv%22+%22No+Experience%22+%22Machine+Learning%22&source=web 429
+2026-06-13 01:54:00,817 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:01,345 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:01,485 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Tel+Aviv%22+%22No+Experience%22+%22Machine+Learning%22 403
+2026-06-13 01:54:01,794 - INFO - response: https://search.yahoo.com/search;_ylt=NeV06O3WQ25KVM2WX9kFv-yj;_ylu=O7ncQxecY2Sa_YoMrKD0-yk6Dg178vArcOpffN6OFe592bI?p=site%3Aworkday.com+%22Tel+Aviv%22+%22No+Experience%22+%22Machine+Learning%22 200
+2026-06-13 01:54:03,231 - INFO - Running ATS search 32/45: site:workday.com "Netanya" "Graduate" "Backend Developer"
+2026-06-13 01:54:03,471 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Netanya%22%20%22Graduate%22%20%22Backend%20Developer%22 200
+2026-06-13 01:54:03,632 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:54:03,832 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Netanya%2522%2B%2522Graduate%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGIqcstEGIjBHoDsa_BXQbRmjn2Rcgs2CKPew9DnSsJU8dfa4R2olm8wqLlip5ZL14s1szTXgfVwyAnJSWgFD 429
+2026-06-13 01:54:03,964 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22 403
+2026-06-13 01:54:04,184 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:54:04,397 - INFO - response: https://search.yahoo.com/search;_ylt=lo_jxafirdURnfEwjfMcQcj5;_ylu=xvNb5GjaBjNZY3C0XQNtGhYTta6RrDT0D1KbQJ0tO3W9upo?p=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22 200
+2026-06-13 01:54:05,257 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:05,444 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:05,949 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:06,315 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&web=1&searchid=3431819 200
+2026-06-13 01:54:06,323 - ERROR - Error for query 'site:workday.com "Netanya" "Graduate" "Backend Developer"': No results found.
+2026-06-13 01:54:06,323 - INFO - Running ATS search 33/45: site:boards.greenhouse.io "Netanya" "Graduate" "Backend Developer"
+2026-06-13 01:54:06,511 - INFO - response: https://search.yahoo.com/search;_ylt=PvNZtd9c_L_ccN2Ses7cVgSb;_ylu=1EoCDfKce66QyVLB15wDEMNnVLYY4REGkUdtLUPr0UZv44o?p=site%3Aboards.greenhouse.io+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22 200
+2026-06-13 01:54:06,633 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Netanya%22%20%22Graduate%22%20%22Backend%20Developer%22 200
+2026-06-13 01:54:06,767 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:54:07,419 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&web=1&searchid=1842056 200
+2026-06-13 01:54:07,781 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Netanya%2522%2B%2522Graduate%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGI-cstEGIjBj5XhKAbpqZ4Q38eQpY6K3c2Aal2Upshb_d0JWkXF8MjHSX4M2WZ8SO4LyvFzho8cyAnJSWgFD 429
+2026-06-13 01:54:07,889 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:08,388 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:08,537 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22 403
+2026-06-13 01:54:08,754 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Graduate%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:54:09,756 - INFO - Running ATS search 34/45: site:boards.greenhouse.io "Tel Aviv" "Junior" "Backend Developer"
+2026-06-13 01:54:09,943 - INFO - response: https://search.yahoo.com/search;_ylt=ZzA6b4Y3CJ2guew-zkJGdbep;_ylu=VYqU1STGzFT4_jhO2tCzOjlZ2Gs7KyeBUBNhZ_B-BEqhYGo?p=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22 200
+2026-06-13 01:54:09,996 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Tel%20Aviv%22%20%22Junior%22%20%22Backend%20Developer%22 200
+2026-06-13 01:54:10,157 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:54:10,700 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&web=1&searchid=2344534 200
+2026-06-13 01:54:10,848 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22 403
+2026-06-13 01:54:11,455 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Tel%2BAviv%2522%2B%2522Junior%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGJKcstEGIjCfoarlbx-ne9ouFw1IW6ou6Y6L2Qce-Ro7lo-lXHNYBwnsjs5R9zDQSULqUmBJfX4yAnJSWgFD 429
+2026-06-13 01:54:11,766 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:11,982 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:54:12,099 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:12,609 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:13,611 - INFO - Running ATS search 35/45: site:jobs.lever.co "Herzliya" "Entry Level" "AI Engineer"
+2026-06-13 01:54:13,621 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&limit=1 200
+2026-06-13 01:54:13,863 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Herzliya%22%20%22Entry%20Level%22%20%22AI%20Engineer%22 200
+2026-06-13 01:54:13,916 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&web=1&searchid=8869596 200
+2026-06-13 01:54:14,062 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22 403
+2026-06-13 01:54:14,174 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:14,688 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:14,913 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&source=web 429
+2026-06-13 01:54:15,198 - INFO - response: https://search.yahoo.com/search;_ylt=bGXWkaTEMNPGNuQ7oYrjdfBu;_ylu=xtWS2g8YAd1It7Kx3KT35SVQ8WXkOMZ8FDQLgrZTDmc6xRg?p=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22 200
+2026-06-13 01:54:16,188 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Herzliya%2522%2B%2522Entry%2BLevel%2522%2B%2522AI%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGJecstEGIjDhURLJxV39gKa3NvtqGSfr3_v8yb8MpYxKx3OmUVUqrJzMZzJhb-_5I033y4-cxIAyAnJSWgFD 429
+2026-06-13 01:54:17,190 - INFO - Running ATS search 36/45: site:jobs.lever.co "Herzliya" "Entry Level" "Python Developer"
+2026-06-13 01:54:17,413 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22Python+Developer%22&source=web 429
+2026-06-13 01:54:17,452 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Herzliya%22%20%22Entry%20Level%22%20%22Python%20Developer%22 200
+2026-06-13 01:54:17,573 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22Python+Developer%22&limit=1 200
+2026-06-13 01:54:18,176 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Herzliya%2522%2B%2522Entry%2BLevel%2522%2B%2522Python%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGJmcstEGIjCdmIo4ikm4qcK0AgAL5HHN3tSB4oTSvA0RSbiKKVkvssMS-kIb2Z6GNOT3wNm3sOcyAnJSWgFD 429
+2026-06-13 01:54:18,366 - INFO - response: https://search.yahoo.com/search;_ylt=iEUKLAEJ4wWW45DrrGFVlkY4;_ylu=QNZIqgUYei5-eTyxZlUjdqsyQp2XvgdMwFbHL35L_NXbH9g?p=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22Python+Developer%22 200
+2026-06-13 01:54:19,132 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22Python+Developer%22&web=1&searchid=4480422 200
+2026-06-13 01:54:19,273 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Entry+Level%22+%22Python+Developer%22 403
+2026-06-13 01:54:19,381 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:19,889 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:20,891 - INFO - Running ATS search 37/45: site:boards.greenhouse.io "Petah Tikva" "Entry Level" "Big Data Specialist"
+2026-06-13 01:54:21,113 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:54:21,165 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:54:21,173 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Petah%20Tikva%22%20%22Entry%20Level%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:54:21,354 - INFO - response: https://search.yahoo.com/search;_ylt=AmIjgngs7HTLyN668Dqq1WwB;_ylu=xaRkB9BZiwFoPxq6tlXcznG9xHVy_J9djFOslR5p4E9PzRM?p=site%3Aboards.greenhouse.io+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:54:21,935 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:22,428 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:22,774 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22&web=1&searchid=6780960 200
+2026-06-13 01:54:23,256 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Petah%2BTikva%2522%2B%2522Entry%2BLevel%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGJ6cstEGIjCC1aXlGQFW-TNp_wjkTepytTu2U55umpX1qOtHlvHRxSmzoFBRJLaHYlbEbIqyLWQyAnJSWgFD 429
+2026-06-13 01:54:23,392 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Petah+Tikva%22+%22Entry+Level%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:54:24,393 - INFO - Running ATS search 38/45: site:boards.greenhouse.io "Netanya" "Entry Level" "AI Engineer"
+2026-06-13 01:54:24,524 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22AI+Engineer%22 403
+2026-06-13 01:54:24,601 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22AI+Engineer%22&limit=1 200
+2026-06-13 01:54:24,669 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Netanya%22%20%22Entry%20Level%22%20%22AI%20Engineer%22 200
+2026-06-13 01:54:24,855 - INFO - response: https://search.yahoo.com/search;_ylt=k8S_6WSjdOOTFp-RmelUvMgk;_ylu=5IEfGngCQDVKO1yoPWR8lBuSrKrgJqUcg3buWaFNKH17HpM?p=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22AI+Engineer%22 200
+2026-06-13 01:54:25,535 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22AI+Engineer%22&source=web 429
+2026-06-13 01:54:25,659 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:26,144 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:26,744 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Netanya%2522%2B%2522Entry%2BLevel%2522%2B%2522AI%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKGcstEGIjDJEXGFHNU71Ttso7COopqvZMMijd3amwFo_TMuInZ4QUtkJl56JwvgCGMjMavdbuUyAnJSWgFD 429
+2026-06-13 01:54:27,063 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:27,401 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22AI+Engineer%22&web=1&searchid=1512739 200
+2026-06-13 01:54:27,412 - ERROR - Error for query 'site:boards.greenhouse.io "Netanya" "Entry Level" "AI Engineer"': No results found.
+2026-06-13 01:54:27,412 - INFO - Running ATS search 39/45: site:boards.greenhouse.io "Herzliya" "Entry Level" "AI Engineer"
+2026-06-13 01:54:27,420 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&limit=1 200
+2026-06-13 01:54:27,640 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&source=web 429
+2026-06-13 01:54:27,655 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Herzliya%22%20%22Entry%20Level%22%20%22AI%20Engineer%22 200
+2026-06-13 01:54:27,969 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22&web=1&searchid=9017247 200
+2026-06-13 01:54:28,202 - INFO - response: https://search.yahoo.com/search;_ylt=2VuVFIeF8caBliTTVaATQlaK;_ylu=MnktRzXhm98jTFdV8G1IW0vyP-Uspd2PGyVYTu0Xw0ngit8?p=site%3Aboards.greenhouse.io+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22 200
+2026-06-13 01:54:28,821 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:29,599 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:30,171 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Herzliya%2522%2B%2522Entry%2BLevel%2522%2B%2522AI%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKWcstEGIjCSWqrNnET20xGxxi43rWQ_cnFu1vDCEeJs408bxPcqdDnig9z1X2QD8V00BpfJ2McyAnJSWgFD 429
+2026-06-13 01:54:30,307 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Herzliya%22+%22Entry+Level%22+%22AI+Engineer%22 403
+2026-06-13 01:54:31,308 - INFO - Running ATS search 40/45: site:comeet.com "Tel Aviv" "Junior" "Backend Developer"
+2026-06-13 01:54:31,442 - INFO - response: https://www.mojeek.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22 403
+2026-06-13 01:54:31,589 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Acomeet.com%20%22Tel%20Aviv%22%20%22Junior%22%20%22Backend%20Developer%22 200
+2026-06-13 01:54:31,703 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Acomeet.com+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&limit=1 200
+2026-06-13 01:54:31,809 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:32,280 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Acomeet.com%2B%2522Tel%2BAviv%2522%2B%2522Junior%2522%2B%2522Backend%2BDeveloper%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKecstEGIjCt4lxgtPeW5MCx3pLlsH5sEvpyY8ayUo0p-Ed0giZICozT6Ou7JefDwuSf_Yv-ieAyAnJSWgFD 429
+2026-06-13 01:54:32,404 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:32,920 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:33,250 - INFO - response: https://search.brave.com/search?q=site%3Acomeet.com+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&source=web 429
+2026-06-13 01:54:33,516 - INFO - response: https://search.yahoo.com/search;_ylt=3z3N8IT-8IjcYu131qD2JscX;_ylu=CbEHRpmudUHHPfw-dz2WT9dSDv5YwHho7HrqeT42Y8HBB9U?p=site%3Acomeet.com+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22 200
+2026-06-13 01:54:34,210 - INFO - response: https://yandex.com/search/site/?text=site%3Acomeet.com+%22Tel+Aviv%22+%22Junior%22+%22Backend+Developer%22&web=1&searchid=2253196 200
+2026-06-13 01:54:35,229 - INFO - Running ATS search 41/45: site:jobs.lever.co "Netanya" "Student" "GenAI"
+2026-06-13 01:54:35,416 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Netanya%22+%22Student%22+%22GenAI%22&limit=1 200
+2026-06-13 01:54:35,465 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Netanya%22%20%22Student%22%20%22GenAI%22 200
+2026-06-13 01:54:35,732 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Netanya%2522%2B%2522Student%2522%2B%2522GenAI%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGKqcstEGIjCT6jfUj30a85_vTHXBVmmN2wIbbfcmklEXq7htLSL1a838kvYCTtwEt2HdX7wEapgyAnJSWgFD 429
+2026-06-13 01:54:35,839 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:36,102 - INFO - response: https://search.yahoo.com/search;_ylt=Zwg_tJg5r09bx3OGBjwKC_VJ;_ylu=ASuVf1Fe1LnByGiK0PERopFQCBELLXJCnmhu7vBNsrzE0zo?p=site%3Ajobs.lever.co+%22Netanya%22+%22Student%22+%22GenAI%22 200
+2026-06-13 01:54:36,866 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Student%22+%22GenAI%22&source=web 429
+2026-06-13 01:54:37,207 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Netanya%22+%22Student%22+%22GenAI%22&web=1&searchid=8269166 200
+2026-06-13 01:54:37,497 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Student%22+%22GenAI%22 403
+2026-06-13 01:54:37,605 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:38,235 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:39,238 - INFO - Running ATS search 42/45: site:jobs.lever.co "Netanya" "Entry Level" "Machine Learning"
+2026-06-13 01:54:39,359 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:39,439 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Netanya%22+%22Entry+Level%22+%22Machine+Learning%22&limit=1 200
+2026-06-13 01:54:39,513 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Netanya%22%20%22Entry%20Level%22%20%22Machine%20Learning%22 200
+2026-06-13 01:54:39,892 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:39,994 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:40,629 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Netanya%2522%2B%2522Entry%2BLevel%2522%2B%2522Machine%2BLearning%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGK-cstEGIjCctmQc3NC8ILBIkNWNfkxNwbX18-vPUsPOJRYBhWKsufnccYPAmadmUUF_JC8UC3YyAnJSWgFD 429
+2026-06-13 01:54:40,853 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Entry+Level%22+%22Machine+Learning%22&source=web 429
+2026-06-13 01:54:41,191 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Netanya%22+%22Entry+Level%22+%22Machine+Learning%22&web=1&searchid=6471779 200
+2026-06-13 01:54:41,337 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Netanya%22+%22Entry+Level%22+%22Machine+Learning%22 403
+2026-06-13 01:54:41,522 - INFO - response: https://search.yahoo.com/search;_ylt=SYHnvWXIvbfcwcff2n8ZeFcE;_ylu=67AHrbhL41OsTwLSa-60bOgvWMuoSixE83O56K_DnNN288A?p=site%3Ajobs.lever.co+%22Netanya%22+%22Entry+Level%22+%22Machine+Learning%22 200
+2026-06-13 01:54:42,949 - INFO - Running ATS search 43/45: site:jobs.lever.co "Herzliya" "Junior" "Data Engineer"
+2026-06-13 01:54:43,205 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Ajobs.lever.co%20%22Herzliya%22%20%22Junior%22%20%22Data%20Engineer%22 200
+2026-06-13 01:54:43,348 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Ajobs.lever.co%2B%2522Herzliya%2522%2B%2522Junior%2522%2B%2522Data%2BEngineer%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLKcstEGIjCSJ66eMEDqDuzspZ3oR6NG6bmasfxYQRff9yptjrnbxuTs6A58Rb2jS5h4uo67JEIyAnJSWgFD 429
+2026-06-13 01:54:44,246 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Ajobs.lever.co+%22Herzliya%22+%22Junior%22+%22Data+Engineer%22&limit=1 200
+2026-06-13 01:54:44,596 - INFO - response: https://yandex.com/search/site/?text=site%3Ajobs.lever.co+%22Herzliya%22+%22Junior%22+%22Data+Engineer%22&web=1&searchid=7498182 200
+2026-06-13 01:54:44,728 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:45,240 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:45,468 - INFO - response: https://search.brave.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Junior%22+%22Data+Engineer%22&source=web 429
+2026-06-13 01:54:45,814 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:46,005 - INFO - response: https://search.yahoo.com/search;_ylt=Lt18bDxZHzacABNJ0micEIvH;_ylu=5LFUSBWgoShKUsfT1O6DDNX0LE4d2XPzD0jioDV1Mwf9iB0?p=site%3Ajobs.lever.co+%22Herzliya%22+%22Junior%22+%22Data+Engineer%22 200
+2026-06-13 01:54:46,825 - INFO - response: https://www.mojeek.com/search?q=site%3Ajobs.lever.co+%22Herzliya%22+%22Junior%22+%22Data+Engineer%22 403
+2026-06-13 01:54:47,827 - INFO - Running ATS search 44/45: site:workday.com "Petah Tikva" "Student" "Machine Learning"
+2026-06-13 01:54:47,834 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aworkday.com+%22Petah+Tikva%22+%22Student%22+%22Machine+Learning%22&limit=1 200
+2026-06-13 01:54:48,076 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aworkday.com%20%22Petah%20Tikva%22%20%22Student%22%20%22Machine%20Learning%22 200
+2026-06-13 01:54:48,711 - INFO - response: https://search.brave.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Student%22+%22Machine+Learning%22&source=web 429
+2026-06-13 01:54:48,819 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:49,032 - INFO - response: https://www.mojeek.com/search?q=site%3Aworkday.com+%22Petah+Tikva%22+%22Student%22+%22Machine+Learning%22 403
+2026-06-13 01:54:49,599 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aworkday.com%2B%2522Petah%2BTikva%2522%2B%2522Student%2522%2B%2522Machine%2BLearning%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLicstEGIjA4aLRGke6sC7vTAicQU8WY-_4WRNMQkU7hUWJTUKYO17TdUnpxDitqiZgm7Na84mkyAnJSWgFD 429
+2026-06-13 01:54:49,797 - INFO - response: https://search.yahoo.com/search;_ylt=_K_8T_6H41Am7duHD3ZI6ZjY;_ylu=dBPlBhRs1dfl9bbNEHGNzoV3fRmONjmtKgzytcFBSFcybQ0?p=site%3Aworkday.com+%22Petah+Tikva%22+%22Student%22+%22Machine+Learning%22 200
+2026-06-13 01:54:50,444 - INFO - response: https://yandex.com/search/site/?text=site%3Aworkday.com+%22Petah+Tikva%22+%22Student%22+%22Machine+Learning%22&web=1&searchid=6729956 200
+2026-06-13 01:54:50,562 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:51,081 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:51,082 - ERROR - Error for query 'site:workday.com "Petah Tikva" "Student" "Machine Learning"': No results found.
+2026-06-13 01:54:51,083 - INFO - Running ATS search 45/45: site:boards.greenhouse.io "Netanya" "Entry Level" "Big Data Specialist"
+2026-06-13 01:54:51,187 - INFO - HTTP Request: POST https://html.duckduckgo.com/html/ "HTTP/2 202 Accepted"
+2026-06-13 01:54:51,309 - INFO - response: https://grokipedia.com/api/typeahead?query=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&limit=1 200
+2026-06-13 01:54:51,359 - INFO - response: https://en.wikipedia.org/w/api.php?action=opensearch&profile=fuzzy&limit=1&search=site%3Aboards.greenhouse.io%20%22Netanya%22%20%22Entry%20Level%22%20%22Big%20Data%20Specialist%22 200
+2026-06-13 01:54:51,466 - INFO - response: https://www.startpage.com/ 200
+2026-06-13 01:54:51,966 - INFO - response: https://www.startpage.com/sp/captcha 200
+2026-06-13 01:54:52,149 - INFO - response: https://search.yahoo.com/search;_ylt=-tOHfrfmrKUQ1lv7qwYE4VOX;_ylu=IGXAV2pkNo8xL8D4NNGz8UHhvJvFfJ6plMzsAIzrzunDYSo?p=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22Big+Data+Specialist%22 200
+2026-06-13 01:54:52,922 - INFO - response: https://search.brave.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&source=web 429
+2026-06-13 01:54:53,259 - INFO - response: https://yandex.com/search/site/?text=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22Big+Data+Specialist%22&web=1&searchid=2509410 200
+2026-06-13 01:54:53,725 - INFO - response: https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Dsite%253Aboards.greenhouse.io%2B%2522Netanya%2522%2B%2522Entry%2BLevel%2522%2B%2522Big%2BData%2BSpecialist%2522%26filter%3D1%26start%3D0%26hl%3Den-US%26lr%3Dlang_en%26cr%3DcountryUS&hl=en-US&q=EgRVQLwuGLycstEGIjD-8yo5wQZPcAtcy5CwXG2-ACCoNtFyak8c6bHFg5G-0rNfHO-hR5QhiLYjVcOKQmcyAnJSWgFD 429
+2026-06-13 01:54:53,859 - INFO - response: https://www.mojeek.com/search?q=site%3Aboards.greenhouse.io+%22Netanya%22+%22Entry+Level%22+%22Big+Data+Specialist%22 403
+2026-06-13 01:54:54,861 - INFO - DEBUG: Found 101 raw URLs from search before regex filtering.
+2026-06-13 01:54:54,863 - INFO - Processing URL: https://boards.greenhouse.io/enova/jobs/6132872
+2026-06-13 01:55:02,869 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:02,874 - INFO - DEBUG LLM Output for https://boards.greenhouse.io/enova/jobs/6132872: {'title': 'NOT_ISRAEL', 'company': 'Enova International', 'description': 'EMPTY'}
+2026-06-13 01:55:02,874 - INFO - Marking job not in Israel: https://boards.greenhouse.io/enova/jobs/6132872
+2026-06-13 01:55:02,884 - INFO - Processing URL: https://jobs.lever.co/acds/158471e5-34e2-45c5-9ef6-70039aa69179
+2026-06-13 01:55:11,631 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:11,632 - INFO - DEBUG LLM Output for https://jobs.lever.co/acds/158471e5-34e2-45c5-9ef6-70039aa69179: {'title': 'NOT_ISRAEL', 'company': '', 'description': ''}
+2026-06-13 01:55:11,632 - INFO - Marking job not in Israel: https://jobs.lever.co/acds/158471e5-34e2-45c5-9ef6-70039aa69179
+2026-06-13 01:55:11,638 - INFO - DEBUG: URL https://jobs.lever.co/rws/861865e6-efc9-4d65-ba8d-a2c18454262b already processed. Skipping.
+2026-06-13 01:55:11,639 - INFO - Processing URL: https://boards.greenhouse.io/outbraininc/jobs/4149876101
+2026-06-13 01:55:18,976 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:18,977 - INFO - DEBUG LLM Output for https://boards.greenhouse.io/outbraininc/jobs/4149876101: {'title': 'NOT_ISRAEL', 'company': 'Teads', 'description': 'EMPTY'}
+2026-06-13 01:55:18,977 - INFO - Marking job not in Israel: https://boards.greenhouse.io/outbraininc/jobs/4149876101
+2026-06-13 01:55:18,982 - INFO - DEBUG: URL https://boards.greenhouse.io/headoutcareers/jobs/4389906006?gh_jid=4389906006&source=LinkedIn already processed. Skipping.
+2026-06-13 01:55:18,983 - INFO - Processing URL: https://jobs.lever.co/steerbridge/084800cd-1bae-4b31-b653-da05c521b2d6
+2026-06-13 01:55:30,836 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:30,851 - INFO - Marking job not in Israel: https://jobs.lever.co/steerbridge/084800cd-1bae-4b31-b653-da05c521b2d6
+2026-06-13 01:55:30,857 - INFO - DEBUG: URL https://boards.greenhouse.io/geniussports/jobs/6441720003?gh_jid=6441720003 already processed. Skipping.
+2026-06-13 01:55:30,858 - INFO - Processing URL: https://boards.greenhouse.io/snorkelai/jobs/5138337004
+2026-06-13 01:55:36,226 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:36,228 - INFO - DEBUG LLM Output for https://boards.greenhouse.io/snorkelai/jobs/5138337004: {'title': 'NOT_ISRAEL', 'company': 'Snorkel AI', 'description': 'EMPTY'}
+2026-06-13 01:55:36,228 - INFO - Marking job not in Israel: https://boards.greenhouse.io/snorkelai/jobs/5138337004
+2026-06-13 01:55:36,235 - INFO - DEBUG: URL https://jobs.lever.co/genbio/97d1b075-b30a-4ed6-9ba3-d6690a606348 already processed. Skipping.
+2026-06-13 01:55:36,236 - INFO - Processing URL: https://boards.greenhouse.io/8451/jobs/7430083002
+2026-06-13 01:55:41,594 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:41,595 - INFO - DEBUG LLM Output for https://boards.greenhouse.io/8451/jobs/7430083002: {'title': 'NOT_ISRAEL', 'company': '84.51°', 'description': 'EMPTY'}
+2026-06-13 01:55:41,595 - INFO - Marking job not in Israel: https://boards.greenhouse.io/8451/jobs/7430083002
+2026-06-13 01:55:41,601 - INFO - Processing URL: https://jobs.lever.co/thinkahead/5f877702-f226-449a-81d0-e6f2238763a4
+2026-06-13 01:55:41,894 - ERROR - Failed to fetch https://jobs.lever.co/thinkahead/5f877702-f226-449a-81d0-e6f2238763a4: 404
+2026-06-13 01:55:41,894 - INFO - DEBUG: URL https://jobs.lever.co/mactores/d237505f-5e6a-4eae-9b06-fa8dd0686236 already processed. Skipping.
+2026-06-13 01:55:41,895 - INFO - Processing URL: https://boards.greenhouse.io/devfuturetalent/jobs/6926223002?ref=Simplify
+2026-06-13 01:55:55,825 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:55:55,828 - INFO - DEBUG LLM Output for https://boards.greenhouse.io/devfuturetalent/jobs/6926223002?ref=Simplify: {'title': 'NOT_ISRAEL', 'company': 'Dev Technology Group', 'description': 'Job Application for Entry level_New graduates (Computer Science/CIS) at Dev Talent Network\nBack to jobs\nEntry level_New graduates (Computer Science/CIS)\nReston, VA\nApply\nDev\'s Talent Network is designed to create a network of talented applicants who are interested in working for Dev Technology and are waiting for a job opening that matches their skills and experience. Here you will find positions we are "always recruiting" as well as an opportunity to share your resume with Dev,\xa0 even if the job position you seek is not listed here today.\nThe Dev Talent Network is a\ncommunity\nof\nhighly qualified technical and management professionals\nrecognized by Dev to demonstrate strong alignment with our company culture\n.\nThe Dev Talent\nNetwork is comprised of candidates, referrals, Dev alumni, and\nfellow colleagues with whom we have worked in the past.\nWe’re excited to evolve the Dev Talent Network\nso our members\nstay connected with Dev and discover new career opportunities with us.\nDev Technology Group frequently hires new graduates for our entry level opportunities.\xa0 Dev Technology is a great place to launch your career with a variety of programs that support our new hires and growth that include our mentorship programs, Denizens, Dev University and more. We hire entry level talent in the following IT service areas: Application Development (Full Stack), QA/Testers, Business Analysts, and AI/Data Science.\nRequired Education, Experience, and Skills:\nBachelors degree in Computer Science, CIS, AI, Data Science or similar program of study\nDemonstrated a strong interest in software development or related technical areas through past employment or academic/personal projects (e.g. GitHub portfolio, etc.) and software development concepts ad best practices for Developer and Business Analyst Opportunities\nOR\nKnowledge of machine learning and data science approaches and applications for\xa0 Data Science and AI Opportunities\nAbility to obtain a U.S. government clearance as required\nPrevious internship experience learning skills applicable to Dev Technology\'s service areas\nA desire to serve government clients and support their missions\nAbility to quickly absorb and learn application functionality well enough to explain it to someone else\nUnderstanding of application technology stacks and how they function together\nDemonstrated ability to communicate clearly and concisely both verbally and in writing\nExcellent diplomacy and communication skills with both clients and technical staff\nExcels working as part of a team\nOpenness to continuous learning and receiving constructive feedback in order to improve\nFamiliarity with agile development methodologies including Scrum, Kanban, or Lean practices preferred\n***By submitting your information you agree our talent recruitment team may use your contact information to reach out to you regarding new opportunities that may be applicable to your experience.\nCreate a Job Alert\nInterested in building your career at Dev Talent Network? Get future opportunities sent straight to your email.\nCreate alert\nApply for this job\n*\nindicates a required field\nFirst Name\n*\nLast Name\n*\nEmail\n*\nPhone\nCountry\n*\nPhone\n*\nLocation (City)\n*\nLocate me\nResume/CV\n*\nAttach\nAttach\nDropbox\nGoogle Drive\nEnter manually\nEnter manually\nAccepted file types: pdf, doc, docx, txt, rtf\nCover Letter\nAttach\nAttach\nDropbox\nGoogle Drive\nEnter manually\nEnter manually\nAccepted file types: pdf, doc, docx, txt, rtf\nEducation\nSchool\n*\nSelect...\nDegree\n*\nSelect...\nDiscipline\n*\nSelect...\nEnd date month\nSelect...\nEnd date year\nAdd another\nVoluntary Self-Identification\nFor government reporting purposes, we ask candidates to respond to the below self-identification survey.\nCompletion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring\nprocess or thereafter. Any information that you do provide will be recorded and maintained in a\nconfidential file.\nAs set forth in Dev Talent Network’s Equal Employment Opportunity policy,\nwe do not discriminate on the basis of any protected group status under any applicable law.\nIf you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection.\n  As a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure\n  the effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories\n  is as follows:\nA "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.\nA "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran\'s discharge or release from active duty in the U.S. military, ground, naval, or air service.\nAn "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.\nAn "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.\nVeteran Status\nSelect...\nVoluntary Self-Identification of Disability\nForm CC-305\nPage 1 of 1\nOMB Control Number 1250-0005\nExpires 04/30/2026\nWhy are you being asked to complete this form?\nWe are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.\nCompleting this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at\nwww.dol.gov/ofccp\n.\nHow do you know if you have a disability?\nA disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability.\nDisabilities include, but are not limited to:\nAlcohol or other substance use disorder (not currently using drugs illegally)\nAutoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS\nBlind or low vision\nCancer (past or present)\nCardiovascular or heart disease\nCeliac disease\nCerebral palsy\nDeaf or serious difficulty hearing\nDiabetes\nDisfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders\nEpilepsy or other seizure disorder\nGastrointestinal disorders, for example, Crohn\'s Disease, irritable bowel syndrome\nIntellectual or developmental disability\nMental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD\nMissing limbs or partially missing limbs\nMobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports\nNervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)\nNeurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities\nPartial or complete paralysis (any cause)\nPulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema\nShort stature (dwarfism)\nTraumatic brain injury\nDisability Status\nSelect...\nPUBLIC BURDEN STATEMENT: According to the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. This survey should take about 5 minutes to complete.\nSubmit application'}
+2026-06-13 01:55:55,829 - INFO - Marking job not in Israel: https://boards.greenhouse.io/devfuturetalent/jobs/6926223002?ref=Simplify
+2026-06-13 01:55:55,835 - INFO - Processing URL: https://jobs.lever.co/nextgenfed/35e13d92-343a-4c17-9789-1a6a9cff2bc6/apply?lever-source=LinkedIn
+2026-06-13 01:56:02,119 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:56:02,121 - INFO - DEBUG LLM Output for https://jobs.lever.co/nextgenfed/35e13d92-343a-4c17-9789-1a6a9cff2bc6/apply?lever-source=LinkedIn: {'title': 'NOT_ISRAEL', 'company': 'NextGen Federal Systems', 'description': 'EMPTY'}
+2026-06-13 01:56:02,121 - INFO - Marking job not in Israel: https://jobs.lever.co/nextgenfed/35e13d92-343a-4c17-9789-1a6a9cff2bc6/apply?lever-source=LinkedIn
+2026-06-13 01:56:02,127 - INFO - Processing URL: https://www.comeet.com/jobs/comeet/30.005?__hstc=105140060.f573d449b1b8d83b3f20ba659e4273cb.1687889213952.1687889213952.1687889213952.1&__hssc=105140060.1.1687889213963&__hsfp=2267535624
+2026-06-13 01:56:02,127 - INFO - DEBUG: Comeet URL missing token or jobid https://www.comeet.com/jobs/comeet/30.005?__hstc=105140060.f573d449b1b8d83b3f20ba659e4273cb.1687889213952.1687889213952.1687889213952.1&__hssc=105140060.1.1687889213963&__hsfp=2267535624. Skipping to prevent LLM quota waste.
+2026-06-13 01:56:02,128 - INFO - Processing URL: https://www.comeet.com/jobs/drivenets/72.006/senior-backend-developer/B1.157
+2026-06-13 01:56:02,677 - INFO - DEBUG: Comeet API failed for https://www.comeet.com/jobs/drivenets/72.006/senior-backend-developer/B1.157. Skipping to prevent LLM quota waste.
+2026-06-13 01:56:02,677 - INFO - Processing URL: https://jobs.lever.co/textnow/e39ed98b-94f8-4567-bd1b-f115e9603f50
+2026-06-13 01:56:16,413 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:56:16,416 - INFO - DEBUG LLM Output for https://jobs.lever.co/textnow/e39ed98b-94f8-4567-bd1b-f115e9603f50: {'title': 'NOT_ISRAEL', 'company': 'TextNow', 'description': 'We believe that communication belongs to everyone. TextNow is redefining how people connect by combining simplicity, intelligence, and accessibility. We’re a team of curious builders using technology to make communication more affordable and powerful for millions of users every day.\nAs a\nSoftware Developer - Backend\n, you won’t just build services—you’ll shape the systems, architecture, and tooling that make them possible. At TextNow, Members of Technical Staff combine leadership and hands-on coding to enable the highest leverage opportunities possible. Being able to operate strategically, as well as diving into the lowest-level details, is a must. You’ll take technical ownership of key backend domains and work across mobile, web, and data to create faster, smarter, more reliable systems.\nAI and automation are at the core of how we build. You’ll use them to accelerate development, improve performance, detect and resolve issues faster, and continuously raise the bar for backend development excellence.\nWe’re hiring Members of Technical Staff across multiple levels (intermediate/senior/staff+). Whether you’re an experienced developer looking to lead complex systems, or an early-career developer eager to grow, we’ll align your title and scope based on experience and impact.\nThis role is about impact at scale. You’ll shape how TextNow builds and operates its backend systems—using AI and automation to make development faster, decisions smarter, and experiences more seamless for millions of users worldwide.\nWhat You\'ll Do\nDesign, develop, and sustain high-performance, scalable backend services using\nGo\nmicroservices and modern cloud-native tooling.\nLead architectural modernization and modularization to improve scalability, observability, and developer velocity.\nDefine and own the entire lifecycle of your systems: API design, data modeling, deployment (CI/CD), live-traffic monitoring, integration and load testing, telemetry & data analysis, experiment design (A/B tests), and continuous iteration.\nInfluence and evolve our architecture: propose and lead initiatives to decompose monoliths, migrate legacy code, build shared frameworks and reusable service components; evaluate new backend technologies and lead their adoption.\nApply AI-driven tools and automation frameworks to speed up development, code analysis, testing, and reliability.\nLeverage intelligent telemetry, analytics, and optimization pipelines to improve service performance and resilience.\nDefine observability standards, telemetry pipelines, and fault-tolerance strategies for production-grade distributed systems.\nPartner closely with product, mobile, and data teams to deliver seamless, high-quality experiences across all platforms.\nDrive technical discussions, mentor developers, and influence strategic direction across backend and infrastructure domains.\nWho You Are\nA technical leader with the ability to create and lead roadmaps/initiatives that align to high-level business objectives.\nDeep expertise in Go, with additional experience in PHP for legacy systems is a bonus\nProven track record of architecting modular, maintainable, and high-performance microservices.\nStrong background in system design, observability, and performance optimization.\nExperience with AWS, Kubernetes, Argo CD, Protobuf, CI/CD pipelines, and auto-scaling architectures.\nExperience using AI and automation to improve developer velocity, reliability, or system intelligence.\nA collaborative technical leader who thrives in fast-moving environments and mentors others to excel.\nPassionate about building resilient, intelligent, and highly scalable backend systems that serve millions of users.\nYou architect for observability, reliability, and production-readiness: you understand instrumentation, SLOs/SLIs, fault-tolerance, runbooks, incident triage, scalable telemetry pipelines, and production diagnostics for backend systems.\nYou have been a technical leader (not just an individual contributor): you’ve influenced roadmap decisions, contributed to multi-team initiatives, mentored/led developers, driven culture/process improvements, and interfaced with senior developer/product leadership.\n$136,300 - $273,900 a year\nCompensation\nThe expected\xa0base salary\xa0range for this role is:\nUnited States (All other areas\xa0not listed above):\xa0USD $123,900 -\xa0$249,000\nUnited States (NYC, CT, NJ, Seattle, LA, San Diego): USD $136,300\xa0-\xa0$273,900\nUnited States (San Francisco / Bay Area): USD $148,700 -\xa0$298,800\nOur salary ranges are\xa0determined\xa0by role, level, and location. Within the range, individual pay is\xa0determined\xa0by job-related skills, experience, and relevant education or training.\nOur goal is to offer a competitive package that reflects the impact and\xa0expertise\xa0you bring to the team.\nThis posting is for a current, active vacancy.\nMore about\xa0TextNow\nOur culture\nWe’re\u202fproud of the culture that\u202fwe’ve\u202fbuilt at\u202fTextNow,\u202fbut one of the most\u202fcommon questions\u202fwe hear is ‘how do you continue to sustain it as the world and the company continues to change?’ The reality is that we’re only able to keep up because each and every\u202fTextNovian\u202fcontributes to our culture through\u202fbeing involved, by living our values, sharing feedback, embracing\u202fchange\u202fand more!\nOur\xa0values\nCustomer Obsessed\nWe strive to have a deep understanding of our customers.\nDo Right\xa0By\xa0Our People\nWe treat each other with fairness, respect, and integrity.\nAccept the Challenge\nWe adopt a "Yes, We Can" mindset to achieve ambitious goals.\nAct Like an Owner\nWe treat this company like\xa0it\'s\xa0our own... because it is!\nGive a Damn\nWe are deeply committed and passionate about our work and achieving results.\nOur benefits and more\nThis is a brief overview of the benefits that\xa0TextNow\xa0offers its employees. More complete details can be found in\xa0TextNow’s\xa0Benefit Guide\xa0and legal plan documents, which are available to employees on or shortly after\xa0their start date with\xa0TextNow. The benefits listed\xa0herein\xa0are for illustrative purposes only and may change from time-to-time in\xa0TextNow’s\xa0sole discretion.\nFree phone service\nStrong work life blend\nFlexible work arrangements (work-from-home, remote, or access to one of our office spaces)\nEmployee\xa0stock\xa0options\nUnlimited vacation\n12 paid holidays\xa0per year\nCompetitive pay\nHealth,\xa0dental, and vision\xa0benefits\nShort-term & long-term disability\n$750 annual wellness benefit\xa0or healthcare spending account\n401(K)\nmatching\nParental leave\xa0for eligible employees\nLearning & Development opportunities\nWe travel a few times a year for various team events,\xa0company-wide\xa0off-sites, and more\nMore information about our total rewards package will be available during the hiring process.\nDogfooding & Customer Obsession\nAt\xa0TextNow, every employee gets to actively use our app for calling and texting. Dogfooding helps us experience what customers do, to spot issues early, and drive better design, developer, and user experiences.\nDiversity and Inclusion\nOur aim is to make every person who joins\u202fTextNow\u202ffeel like they belong, that\u202fthey’re\u202fvalued, and that\u202fthey’re\u202fable to be their authentic\u202fselves\u202fat work.\nWe’re\u202fall accountable for creating an inclusive culture and a sense of belonging\u202ffor\u202fone another. By doing this together,\u202fwe’ll\u202fmake\u202fTextNow\u202fbetter for everyone.\nEqual opportunity\nWe are an equal opportunity employer and are committed to creating an inclusive environment for all employees. We consider all qualified applicants without regard to race, color, religion, sex, gender identity or expression, sexual orientation, age, disability, or any other protected characteristic.\nApplicants who require reasonable accommodation during the hiring process may contact our\xa0Talent Team.\nAI usage: We use artificial intelligence (AI) tools to support parts of the hiring process, such as reviewing applications, analyzing resumes, or assessing responses. These tools assist our recruitment team but do not replace human judgment. Final hiring decisions are ultimately made by humans. If you would like more information about how your data is processed, please contact our Talent Team.\nTextNow\xa0Candidate Policy\nBy\xa0submitting\xa0an application to\xa0TextNow, you agree to the collection, use, and disclosure of your personal information\xa0in accordance with\xa0the\nTextNow Candidate Policy'}
+2026-06-13 01:56:16,417 - INFO - Marking job not in Israel: https://jobs.lever.co/textnow/e39ed98b-94f8-4567-bd1b-f115e9603f50
+2026-06-13 01:56:16,422 - INFO - DEBUG: URL https://jobs.lever.co/mistral/c7b7fdfe-a071-4d62-bc15-7bcdff8067e7 already processed. Skipping.
+2026-06-13 01:56:16,423 - INFO - Processing URL: https://jobs.lever.co/BDG/b404a58a-c488-406a-87ff-1189b75573e2/apply?source=LinkedIn
+2026-06-13 01:56:21,995 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-06-13 01:56:21,997 - INFO - DEBUG LLM Output for https://jobs.lever.co/BDG/b404a58a-c488-406a-87ff-1189b75573e2/apply?source=LinkedIn: {'title': 'NOT_ISRAEL', 'company': 'BDG', 'description': 'EMPTY'}
+2026-06-13 01:56:21,997 - INFO - Marking job not in Israel: https://jobs.lever.co/BDG/b404a58a-c488-406a-87ff-1189b75573e2/apply?source=LinkedIn
+2026-06-13 01:56:22,004 - INFO - Processing URL: https://jobs.lever.co/palantir/dab396d4-2f14-4796-aac0-0d82883dccf0
