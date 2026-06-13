@@ -3,7 +3,7 @@ import email
 import re
 from email.header import decode_header
 import os
-from .models import add_pending_company
+from .models import add_pending_company, init_db
 
 # Gmail IMAP settings
 IMAP_SERVER = "imap.gmail.com"
@@ -21,6 +21,7 @@ def extract_urls(text):
     return url_pattern.findall(text)
 
 def fetch_job_alerts():
+    init_db()
     try:
         mail = connect_imap()
     except Exception as e:

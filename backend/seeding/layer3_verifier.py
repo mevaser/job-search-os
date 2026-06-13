@@ -2,7 +2,7 @@ import requests
 import re
 import sqlite3
 from urllib.parse import urlparse
-from .models import DB_PATH, add_sniper_target
+from .models import DB_PATH, add_sniper_target, init_db
 
 # Headers to appear as a normal client during verification
 HEADERS = {
@@ -41,6 +41,7 @@ def verify_ats_endpoint(company_name: str, slug: str):
 
 def process_pending_verifications():
     """Reads from PendingVerification table and attempts to verify"""
+    init_db()
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
