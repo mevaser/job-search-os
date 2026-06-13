@@ -47,8 +47,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Stage the SQLite database file
-          git add careerflow.db
+          # Stage the SQLite database file (force add to bypass .gitignore)
+          git add -f careerflow.db
           
           # Check if the database was modified
           if git diff --staged --quiet; then
