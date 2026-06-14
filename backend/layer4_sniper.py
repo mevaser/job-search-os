@@ -65,6 +65,7 @@ def extract_job_text(url: str) -> str:
             script.extract()
             
         text = soup.get_text(separator=' ', strip=True)
+        print(f"DEBUG: Scraped {len(text.strip())} characters from {url}")
         # Limit text length to avoid exceeding context window unexpectedly
         return text[:15000] 
     except Exception as e:
