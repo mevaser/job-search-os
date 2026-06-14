@@ -32,21 +32,22 @@ DB_PATH = os.path.join(os.path.dirname(__file__), "..", "careerflow.db")
 # LLM Filtering Criteria (System Prompt)
 SYSTEM_PROMPT = """
 You are an expert technical recruiter and job evaluator.
-Your task is to analyze the provided job description and determine if it is a good fit for our candidate.
+Your task is to analyze the provided job description and determine its fit for our candidate.
 
 Target Roles:
+- AI Engineer
+- Data Analyst
+- Data Science
+- Python Developer
 - Backend Development
 - Data Engineering
 - Big Data
-
-Criteria for MATCH:
-- The role must primarily focus on Backend Development (e.g., Python, Node.js, Go, Java, APIs, Microservices), OR Data Engineering (e.g., ETL, Airflow, Spark, dbt), OR Big Data.
-- Reject roles that are purely Frontend, purely DevOps/Infrastructure without backend focus, pure Data Science/Machine Learning, or non-technical.
+- AND any other adjacent/hybrid technical roles that fit this ecosystem.
 
 You must respond strictly in JSON format with the following three fields:
-- "decision": A string that must be exactly "MATCH" or "SKIP".
-- "reason": A brief 1-2 sentence explanation of why this decision was made.
+- "score": An integer from 0 to 100 representing how well the role fits the target criteria.
 - "job_title": A string with the extracted job title from the description.
+- "reason": A brief explanation of why it received this specific score.
 """
 
 def extract_job_text(url: str) -> str:
@@ -73,7 +74,7 @@ def extract_job_text(url: str) -> str:
 def evaluate_job_with_llm(job_text: str) -> dict:
     """Evaluate the job text using the primary LLM, with a fallback to a weaker model."""
     if not job_text.strip():
-        return {"decision": "SKIP", "reason": "Empty job description."}
+        return {"score": 0, "job_title": "Unknown Title", "reason": "Empty job description."}
 
     prompt = f"{SYSTEM_PROMPT}\n\nJob Description:\n{job_text}"
     
@@ -100,7 +101,7 @@ def evaluate_job_with_llm(job_text: str) -> dict:
         return result
     except Exception as e:
         logging.error(f"Fallback model also failed: {e}")
-        return {"decision": "SKIP", "reason": f"Evaluation failed due to LLM error: {e}"}
+        return {"score": 0, "job_title": "Unknown Title", "reason": f"Evaluation failed due to LLM error: {e}"}
 
 def process_targets():
     """Iterate through the SniperTarget table and process each URL."""
@@ -143,21 +144,20 @@ def process_targets():
             
         evaluation = evaluate_job_with_llm(job_text)
         
-        decision = evaluation.get("decision", "SKIP")
+        score = evaluation.get("score", 0)
         reason = evaluation.get("reason", "No reason provided.")
         job_title = evaluation.get("job_title", "Unknown Title")
         
-        logging.info(f"Decision: {decision}")
+        logging.info(f"Score: {score}")
         logging.info(f"Reason: {reason}")
         logging.info(f"Job Title: {job_title}")
         
-        if decision == "MATCH":
-            cursor.execute('''
-                INSERT INTO MatchedJobs (company_name, job_title, job_url, match_reason)
-                VALUES (?, ?, ?, ?)
-            ''', (company, job_title, url, reason))
-            conn.commit()
-            logging.info("Saved MATCH to MatchedJobs table.")
+        cursor.execute('''
+            INSERT INTO MatchedJobs (company_name, job_title, job_url, match_reason, match_score)
+            VALUES (?, ?, ?, ?, ?)
+        ''', (company, job_title, url, reason, score))
+        conn.commit()
+        logging.info(f"Saved job to MatchedJobs table with score {score}.")
         
         # Small delay to be polite to the target servers and LLM APIs
         time.sleep(2)

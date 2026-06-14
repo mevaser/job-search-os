@@ -41,9 +41,15 @@ def init_db():
             job_title TEXT,
             job_url TEXT,
             match_reason TEXT,
+            match_score INTEGER,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+    
+    try:
+        cursor.execute("ALTER TABLE MatchedJobs ADD COLUMN match_score INTEGER")
+    except sqlite3.OperationalError:
+        pass
     
     conn.commit()
     conn.close()
