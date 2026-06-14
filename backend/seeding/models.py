@@ -33,6 +33,18 @@ def init_db():
         )
     ''')
     
+    # Matched Jobs Database
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS MatchedJobs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            company_name TEXT,
+            job_title TEXT,
+            job_url TEXT,
+            match_reason TEXT,
+            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
     conn.commit()
     conn.close()
 
