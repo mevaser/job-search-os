@@ -40,7 +40,7 @@ jobs:
       - name: Run Layer 3 (Verifier)
         run: python -m backend.seeding.layer3_verifier
 
-      - name: Run Layer 4 (Sniper)
+      - name: Run Layer 4 (Sniper Engine)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python -m backend.layer4_sniper
