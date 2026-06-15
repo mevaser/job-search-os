@@ -7,6 +7,8 @@ import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import google.generativeai as genai
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -21,6 +23,21 @@ if not GEMINI_API_KEY:
     exit(1)
 
 genai.configure(api_key=GEMINI_API_KEY)
+
+# Initialize Firebase Admin
+FIREBASE_SERVICE_ACCOUNT_KEY = os.environ.get("FIREBASE_SERVICE_ACCOUNT_KEY")
+db_firestore = None
+if FIREBASE_SERVICE_ACCOUNT_KEY:
+    try:
+        service_account_info = json.loads(FIREBASE_SERVICE_ACCOUNT_KEY)
+        cred = credentials.Certificate(service_account_info)
+        firebase_admin.initialize_app(cred)
+        db_firestore = firestore.client()
+        logging.info("Firebase initialized successfully.")
+    except Exception as e:
+        logging.error(f"Failed to initialize Firebase: {e}")
+else:
+    logging.warning("FIREBASE_SERVICE_ACCOUNT_KEY not found in environment. Firebase pushes will be disabled.")
 
 # Define Primary and Fallback Models
 PRIMARY_MODEL_NAME = 'gemini-2.5-pro'
@@ -173,6 +190,22 @@ def process_targets():
         ''', (company, job_title, url, reason, score))
         conn.commit()
         logging.info(f"Saved job to MatchedJobs table with score {score}.")
+        
+        # Push to Firebase
+        if db_firestore:
+            try:
+                doc_ref = db_firestore.collection('jobs').document()
+                doc_ref.set({
+                    'job_title': job_title,
+                    'company_name': company,
+                    'job_url': url,
+                    'match_score': score,
+                    'match_reason': reason,
+                    'timestamp': firestore.SERVER_TIMESTAMP
+                })
+                logging.info("Pushed job to Firestore.")
+            except Exception as e:
+                logging.error(f"Failed to push job to Firestore: {e}")
         
         # Small delay to be polite to the target servers and LLM APIs
         time.sleep(2)
