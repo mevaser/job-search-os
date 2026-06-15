@@ -23,8 +23,8 @@ if not GEMINI_API_KEY:
 genai.configure(api_key=GEMINI_API_KEY)
 
 # Define Primary and Fallback Models
-PRIMARY_MODEL_NAME = 'gemini-3.5-pro'
-FALLBACK_MODEL_NAME = 'gemini-3.5-flash'
+PRIMARY_MODEL_NAME = 'gemini-2.5-pro'
+FALLBACK_MODEL_NAME = 'gemini-2.5-flash'
 
 # Path to the SQLite database
 DB_PATH = os.path.join(os.path.dirname(__file__), "..", "careerflow.db")
@@ -51,11 +51,25 @@ You must respond strictly in JSON format with the following three fields:
 """
 
 def extract_job_text(url: str) -> str:
-    """Scrape the given ATS URL and extract visible text."""
+    """Scrape the given ATS URL and extract visible text using Jina Reader API with a fallback to BeautifulSoup."""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+    
+    # Primary: Jina Reader API
     try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
+        jina_url = f"https://r.jina.ai/{url}"
+        response = requests.get(jina_url, headers=headers, timeout=20)
+        response.raise_for_status()
+        text = response.text.strip()
+        print(f"DEBUG: Scraped {len(text)} characters from {url} (Jina)")
+        if len(text) > 100:
+            return text[:15000]
+    except Exception as e:
+        logging.warning(f"Jina extraction failed or returned too little text for {url}: {e}. Falling back to BeautifulSoup.")
+
+    # Fallback: BeautifulSoup
+    try:
         response = requests.get(url, headers=headers, timeout=15)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, 'html.parser')
@@ -65,7 +79,7 @@ def extract_job_text(url: str) -> str:
             script.extract()
             
         text = soup.get_text(separator=' ', strip=True)
-        print(f"DEBUG: Scraped {len(text.strip())} characters from {url}")
+        print(f"DEBUG: Scraped {len(text)} characters from {url} (BeautifulSoup)")
         # Limit text length to avoid exceeding context window unexpectedly
         return text[:15000] 
     except Exception as e:
