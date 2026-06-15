@@ -13,3 +13,4 @@ requests
 ddgs
 openai
 google-generativeai
+playwright

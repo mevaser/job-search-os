@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "tsc && vite build && firebase deploy --only hosting"
+    "deploy": "vite build && firebase deploy --only hosting"
   },
   "dependencies": {
     "firebase": "^12.14.0",
