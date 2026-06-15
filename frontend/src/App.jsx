@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore'
+import { db } from './firebase'
 
 function App() {
   const [jobs, setJobs] = useState([])
@@ -8,32 +10,31 @@ function App() {
   const [scanningAts, setScanningAts] = useState(false)
   const [scanProgress, setScanProgress] = useState('')
   const [selectedJob, setSelectedJob] = useState(null)
+  const [showAllJobs, setShowAllJobs] = useState(true)
   const [filters, setFilters] = useState({
     title: '',
     company: '',
-    role_family: '',
-    decision: 'All',
-    status: 'All',
     notes: ''
   })
   const [activeFilterColumn, setActiveFilterColumn] = useState(null)
 
-  const fetchJobs = async () => {
-    setLoading(true)
-    try {
-      const res = await fetch('http://localhost:8000/api/jobs')
-      const data = await res.json()
-      setJobs(data)
-    } catch (err) {
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
   useEffect(() => {
-    fetchJobs()
-  }, [])
+    setLoading(true);
+    const q = query(collection(db, 'jobs'), orderBy('timestamp', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const jobsData = [];
+      snapshot.forEach((doc) => {
+        jobsData.push({ id: doc.id, ...doc.data() });
+      });
+      setJobs(jobsData);
+      setLoading(false);
+    }, (error) => {
+      console.error("Error fetching jobs from Firestore:", error);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleProcessMock = async () => {
     setProcessing(true)
@@ -41,7 +42,6 @@ function App() {
       await fetch('http://localhost:8000/api/jobs/process-mock', {
         method: 'POST'
       })
-      await fetchJobs()
     } catch (err) {
       console.error(err)
     } finally {
@@ -95,8 +95,9 @@ function App() {
         }
       }
       // Explicitly wait for the backend to finalize DB commits and close the stream
+      // The real-time listener will automatically update the UI when the backend pushes to Firestore
       setTimeout(async () => {
-        await fetchJobs()
+        console.log("Scan completed.");
       }, 500)
     } catch (err) {
       console.error(err)
@@ -121,7 +122,7 @@ function App() {
           results_wanted: 10
         })
       })
-      await fetchJobs()
+      // Real-time listener will handle updates
     } catch (err) {
       console.error(err)
     } finally {
@@ -143,14 +144,13 @@ function App() {
   }
 
   const filteredJobs = jobs.filter(job => {
-    const matchTitle = !filters.title || job.title.toLowerCase().includes(filters.title.toLowerCase())
-    const matchCompany = !filters.company || job.company.toLowerCase().includes(filters.company.toLowerCase())
-    const matchRole = !filters.role_family || (job.analysis && job.analysis.role_family && job.analysis.role_family.toLowerCase().includes(filters.role_family.toLowerCase()))
-    const matchDecision = filters.decision === 'All' || (job.analysis && job.analysis.decision === filters.decision)
-    const matchStatus = filters.status === 'All' || (job.application_status || 'Not Applied') === filters.status
-    const matchNotes = !filters.notes || (job.application_notes && job.application_notes.toLowerCase().includes(filters.notes.toLowerCase()))
+    if (!showAllJobs && (job.match_score === undefined || job.match_score < 70)) return false;
+
+    const matchTitle = !filters.title || (job.job_title && job.job_title.toLowerCase().includes(filters.title.toLowerCase()))
+    const matchCompany = !filters.company || (job.company_name && job.company_name.toLowerCase().includes(filters.company.toLowerCase()))
+    const matchNotes = !filters.notes || (job.match_reason && job.match_reason.toLowerCase().includes(filters.notes.toLowerCase()))
     
-    return matchTitle && matchCompany && matchRole && matchDecision && matchStatus && matchNotes
+    return matchTitle && matchCompany && matchNotes
   })
 
   const handleFilterChange = (column, value) => {
@@ -212,6 +212,20 @@ function App() {
             <p className="text-gray-400 mt-1">Live Pipeline Dashboard</p>
           </div>
           <div className="flex gap-4">
+            <div className="flex bg-gray-800 p-1 rounded-lg items-center border border-gray-700 mr-4">
+              <button 
+                onClick={() => setShowAllJobs(true)}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${showAllJobs ? 'bg-blue-600 text-white shadow' : 'text-gray-400 hover:text-gray-200'}`}
+              >
+                Show All Jobs
+              </button>
+              <button 
+                onClick={() => setShowAllJobs(false)}
+                className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${!showAllJobs ? 'bg-blue-600 text-white shadow' : 'text-gray-400 hover:text-gray-200'}`}
+              >
+                Relevant Only (Score 70+)
+              </button>
+            </div>
             <button 
               onClick={handleProcessMock} 
               disabled={processing || scanning || scanningAts}
@@ -298,32 +312,11 @@ function App() {
                       </div>
                       <FilterPopover column="company" label="Company" type="text" />
                     </th>
-                    <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('role_family', e)}>
-                      <div className="flex items-center space-x-1">
-                        <span>Role Family</span>
-                        <span className={`text-[10px] ${filters.role_family ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
-                      </div>
-                      <FilterPopover column="role_family" label="Role Family" type="text" />
-                    </th>
                     <th className="p-4 font-semibold">Scanned At</th>
                     <th className="p-4 font-semibold text-center">Fit Score</th>
-                    <th className="p-4 font-semibold text-center relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('decision', e)}>
-                      <div className="flex items-center justify-center space-x-1">
-                        <span>Decision</span>
-                        <span className={`text-[10px] ${filters.decision !== 'All' ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
-                      </div>
-                      <FilterPopover column="decision" label="Decision" type="select" options={['All', 'KEEP', 'REVIEW', 'REJECT']} />
-                    </th>
-                    <th className="p-4 font-semibold text-center relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('status', e)}>
-                      <div className="flex items-center justify-center space-x-1">
-                        <span>Status</span>
-                        <span className={`text-[10px] ${filters.status !== 'All' ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
-                      </div>
-                      <FilterPopover column="status" label="Status" type="select" options={['All', 'Not Applied', 'Applied', 'Interviewing', 'Rejected', 'Offer']} alignRight={true} />
-                    </th>
                     <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('notes', e)}>
                       <div className="flex items-center space-x-1">
-                        <span>Notes</span>
+                        <span>Notes/Reason</span>
                         <span className={`text-[10px] ${filters.notes ? 'text-blue-400' : 'text-gray-600 group-hover:text-gray-400'}`}>▼</span>
                       </div>
                       <FilterPopover column="notes" label="Notes" type="text" alignRight={true} />
@@ -336,12 +329,7 @@ function App() {
                       <td className="p-4">
                         <div className="flex flex-col space-y-1">
                           <div className="font-medium text-gray-200 flex flex-wrap items-center gap-2">
-                            <span className="text-base">{job.title}</span>
-                            {job.is_updated && (
-                              <span className="bg-blue-500/20 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-500/30 whitespace-nowrap uppercase tracking-wide shadow-sm">
-                                Updated
-                              </span>
-                            )}
+                            <span className="text-base">{job.job_title || 'Unknown Title'}</span>
                             {job.job_url && (
                               <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 p-1" title="Open external link">
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
@@ -349,7 +337,6 @@ function App() {
                             )}
                           </div>
                           <div className="text-xs text-gray-500 flex justify-between items-center mt-1.5">
-                            <span>{job.location}</span>
                             <button 
                               onClick={() => setSelectedJob(job)}
                               className="text-blue-400 hover:text-blue-300 font-medium px-2.5 py-1 rounded bg-blue-500/10 hover:bg-blue-500/20 transition-colors border border-blue-500/20 flex items-center gap-1"
@@ -359,75 +346,29 @@ function App() {
                           </div>
                         </div>
                       </td>
-                      <td className="p-4 text-gray-300">{job.company}</td>
-                      <td className="p-4 text-gray-300">
-                        {job.analysis?.role_family || 'N/A'}
-                        <div className="text-xs text-gray-500 mt-1">Exp: {job.analysis?.experience_requirement ?? '?'} yrs</div>
-                      </td>
+                      <td className="p-4 text-gray-300">{job.company_name || 'Unknown Company'}</td>
                       <td className="p-4 text-gray-400 text-sm whitespace-nowrap">
-                        {job.created_at ? (() => {
-                          const d = new Date(job.created_at.endsWith('Z') ? job.created_at : job.created_at + 'Z');
+                        {job.timestamp ? (() => {
+                          const dateObj = job.timestamp.toDate ? job.timestamp.toDate() : new Date(job.timestamp);
                           const pad = (n) => n.toString().padStart(2, '0');
-                          return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+                          return `${pad(dateObj.getDate())}/${pad(dateObj.getMonth()+1)}/${dateObj.getFullYear()} ${pad(dateObj.getHours())}:${pad(dateObj.getMinutes())}`;
                         })() : 'N/A'}
                       </td>
                       <td className="p-4 text-center">
-                        {job.analysis ? (
+                        {job.match_score !== undefined ? (
                           <span className={`inline-flex items-center justify-center w-10 h-10 rounded-full font-bold ${
-                            job.analysis.fit_score >= 80 ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
-                            job.analysis.fit_score >= 50 ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
+                            job.match_score >= 80 ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
+                            job.match_score >= 50 ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
                             'bg-rose-500/20 text-rose-400 border border-rose-500/30'
                           }`}>
-                            {job.analysis.fit_score}
+                            {job.match_score}
                           </span>
                         ) : (
                           <span className="text-gray-600">-</span>
                         )}
                       </td>
-                      <td className="p-4 text-center">
-                        {job.analysis ? (
-                          <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-wider ${
-                            job.analysis.decision === 'KEEP' ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' :
-                            job.analysis.decision === 'REVIEW' ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20' :
-                            'bg-gray-700 text-gray-300'
-                          }`}>
-                            {job.analysis.decision}
-                          </span>
-                        ) : (
-                          <span className="text-gray-600">-</span>
-                        )}
-                      </td>
-                      <td className="p-4 text-center">
-                        <select 
-                          value={job.application_status || 'Not Applied'} 
-                          onChange={(e) => handleUpdateJob(job.id, { application_status: e.target.value })}
-                          className={`bg-gray-700 text-white rounded px-2 py-1 border focus:outline-none focus:border-blue-500 text-sm ${
-                            job.application_status === 'Applied' ? 'border-blue-500' :
-                            job.application_status === 'Interviewing' ? 'border-purple-500' :
-                            job.application_status === 'Rejected' ? 'border-red-500' :
-                            job.application_status === 'Offer' ? 'border-green-500' :
-                            'border-gray-600'
-                          }`}
-                        >
-                          <option value="Not Applied">Not Applied</option>
-                          <option value="Applied">Applied</option>
-                          <option value="Interviewing">Interviewing</option>
-                          <option value="Rejected">Rejected</option>
-                          <option value="Offer">Offer</option>
-                        </select>
-                      </td>
-                      <td className="p-4">
-                        <input 
-                          type="text" 
-                          placeholder="Add notes..." 
-                          defaultValue={job.application_notes || ''}
-                          onBlur={(e) => {
-                            if (e.target.value !== (job.application_notes || '')) {
-                              handleUpdateJob(job.id, { application_notes: e.target.value })
-                            }
-                          }}
-                          className="bg-gray-700/50 text-gray-300 text-sm rounded px-3 py-1.5 border border-gray-600 focus:outline-none focus:border-blue-500 focus:bg-gray-700 w-full min-w-[150px]"
-                        />
+                      <td className="p-4 text-gray-300 text-sm max-w-xs truncate" title={job.match_reason}>
+                        {job.match_reason || '-'}
                       </td>
                     </tr>
                   ))}
@@ -459,41 +400,23 @@ function App() {
               </button>
             </div>
             <div className="p-6 space-y-8">
-              {/* AI Analysis */}
-              {selectedJob.analysis && (
+              {/* Sniper Evaluation */}
+              {selectedJob.match_score !== undefined && (
                 <div className="bg-gray-900/60 p-6 rounded-2xl border border-gray-700/60 shadow-inner">
                   <div className="flex items-center gap-2 mb-4 border-b border-gray-700/60 pb-3">
                     <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    <h3 className="text-lg font-bold text-gray-100">AI Analysis</h3>
+                    <h3 className="text-lg font-bold text-gray-100">Sniper Evaluation</h3>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                     <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
-                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Decision</div>
-                      <div className={`text-xl font-bold ${selectedJob.analysis.decision === 'KEEP' ? 'text-emerald-400' : selectedJob.analysis.decision === 'REVIEW' ? 'text-amber-400' : 'text-gray-400'}`}>
-                        {selectedJob.analysis.decision}
-                      </div>
-                    </div>
-                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
                       <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Fit Score</div>
-                      <div className="text-xl font-bold text-blue-400">{selectedJob.analysis.fit_score}<span className="text-sm text-gray-500">/100</span></div>
-                    </div>
-                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
-                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Role Family</div>
-                      <div className="font-bold text-gray-200">{selectedJob.analysis.role_family}</div>
-                    </div>
-                    <div className="bg-gray-800/80 p-4 rounded-xl border border-gray-700">
-                      <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider font-semibold">Experience</div>
-                      <div className="font-bold text-gray-200">{selectedJob.analysis.experience_requirement} yrs</div>
+                      <div className="text-xl font-bold text-blue-400">{selectedJob.match_score}<span className="text-sm text-gray-500">/100</span></div>
                     </div>
                   </div>
                   <div className="bg-gray-800/40 p-4 rounded-xl border border-gray-700/50 space-y-3">
                     <div className="text-sm text-gray-300 leading-relaxed">
-                      <strong className="text-gray-200 mr-2">Breakdown:</strong> 
-                      {selectedJob.analysis.score_breakdown}
-                    </div>
-                    <div className="text-sm text-gray-300 leading-relaxed">
-                      <strong className="text-gray-200 mr-2">Evidence:</strong> 
-                      {selectedJob.analysis.evidence}
+                      <strong className="text-gray-200 mr-2">Match Reason:</strong> 
+                      {selectedJob.match_reason || '-'}
                     </div>
                   </div>
                 </div>
