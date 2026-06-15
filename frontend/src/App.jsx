@@ -429,7 +429,7 @@ function App() {
                   <h3 className="text-lg font-bold text-gray-200">Job Description</h3>
                 </div>
                 <div className="bg-gray-900/80 p-6 rounded-2xl border border-gray-700 text-base text-gray-300 whitespace-pre-wrap leading-relaxed max-h-[500px] overflow-y-auto shadow-inner">
-                  {selectedJob.description || 'No description available.'}
+                  {selectedJob.job_description || 'No description available.'}
                 </div>
               </div>
 

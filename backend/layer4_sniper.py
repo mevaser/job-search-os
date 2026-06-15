@@ -219,10 +219,12 @@ def process_targets():
         logging.info(f"Reason: {reason}")
         logging.info(f"Job Title: {job_title}")
         
+        job_description = job_text[:3000]
+        
         cursor.execute('''
-            INSERT INTO MatchedJobs (company_name, job_title, job_url, match_reason, match_score)
-            VALUES (?, ?, ?, ?, ?)
-        ''', (company, job_title, url, reason, score))
+            INSERT INTO MatchedJobs (company_name, job_title, job_url, match_reason, match_score, job_description)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ''', (company, job_title, url, reason, score, job_description))
         conn.commit()
         logging.info(f"Saved job to MatchedJobs table with score {score}.")
         
@@ -236,6 +238,7 @@ def process_targets():
                     'job_url': url,
                     'match_score': score,
                     'match_reason': reason,
+                    'job_description': job_description,
                     'timestamp': firestore.SERVER_TIMESTAMP
                 })
                 logging.info("Pushed job to Firestore.")
