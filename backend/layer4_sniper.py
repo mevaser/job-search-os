@@ -61,10 +61,11 @@ Target Roles:
 - Big Data
 - AND any other adjacent/hybrid technical roles that fit this ecosystem.
 
-You must respond strictly in JSON format with the following three fields:
+You must respond strictly in JSON format with the following four fields:
 - "score": An integer from 0 to 100 representing how well the role fits the target criteria.
 - "job_title": A string with the extracted job title from the description.
 - "reason": A brief explanation of why it received this specific score.
+- "clean_description": A clean version of the job description. Extract and return ONLY the core job responsibilities, requirements, and company description. Explicitly remove any website boilerplate, navigation menus, footer text, or "Apply Now" buttons.
 """
 
 def extract_job_text(url: str) -> str:
@@ -141,7 +142,7 @@ def extract_job_text(url: str) -> str:
 def evaluate_job_with_llm(job_text: str) -> dict:
     """Evaluate the job text using the primary LLM, with a fallback to a weaker model."""
     if not job_text.strip():
-        return {"score": 0, "job_title": "Unknown Title", "reason": "Empty job description."}
+        return {"score": 0, "job_title": "Unknown Title", "reason": "Empty job description.", "clean_description": ""}
 
     prompt = f"{SYSTEM_PROMPT}\n\nJob Description:\n{job_text}"
     
@@ -168,7 +169,7 @@ def evaluate_job_with_llm(job_text: str) -> dict:
         return result
     except Exception as e:
         logging.error(f"Fallback model also failed: {e}")
-        return {"score": 0, "job_title": "Unknown Title", "reason": f"Evaluation failed due to LLM error: {e}"}
+        return {"score": 0, "job_title": "Unknown Title", "reason": f"Evaluation failed due to LLM error: {e}", "clean_description": ""}
 
 def process_targets():
     """Iterate through the SniperTarget table and process each URL."""
@@ -204,6 +205,16 @@ def process_targets():
         logging.info(f"\n--- Processing Target [{target_id}] {company} ---")
         logging.info(f"URL: {url}")
         
+        # Deduplication check in SQLite
+        try:
+            cursor.execute("SELECT 1 FROM MatchedJobs WHERE job_url = ?", (url,))
+            if cursor.fetchone():
+                logging.info(f"URL already processed, skipping: {url}")
+                continue
+        except sqlite3.OperationalError:
+            # Table might not exist yet, which is fine
+            pass
+
         job_text = extract_job_text(url)
         if not job_text:
             logging.info("Skipping evaluation due to missing text.")
@@ -219,7 +230,7 @@ def process_targets():
         logging.info(f"Reason: {reason}")
         logging.info(f"Job Title: {job_title}")
         
-        job_description = job_text[:3000]
+        job_description = evaluation.get("clean_description", job_text[:3000])
         
         cursor.execute('''
             INSERT INTO MatchedJobs (company_name, job_title, job_url, match_reason, match_score, job_description)
