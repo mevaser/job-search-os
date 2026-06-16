@@ -136,6 +136,18 @@ def extract_job_text(url: str) -> str:
                 page.goto(url, wait_until="networkidle", timeout=30000)
                 # Wait a bit for JS to render
                 page.wait_for_timeout(3000)
+                
+                # Forcefully remove cookie banners and popups
+                page.evaluate('''() => {
+                    const selectors = [
+                        '[id*="cookie"]', '[class*="cookie"]', 
+                        '[class*="onetrust"]', '[id*="onetrust"]', 
+                        '[id*="consent"]', '[class*="consent"]', 
+                        '[class*="popup"]', '[id*="popup"]'
+                    ];
+                    document.querySelectorAll(selectors.join(', ')).forEach(el => el.remove());
+                }''')
+                
                 text = page.evaluate("document.body.innerText")
                 browser.close()
                 text = text.strip() if text else ""
