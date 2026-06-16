@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from 'firebase/firestore'
+import { collection, query, orderBy, onSnapshot, deleteDoc, doc, addDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from './firebase'
 
 const CustomCheckbox = ({ checked, onChange }) => (
@@ -41,6 +41,9 @@ function App() {
   })
   const [activeFilterColumn, setActiveFilterColumn] = useState(null)
   const [selectedJobs, setSelectedJobs] = useState([])
+  const [isAddJobModalOpen, setIsAddJobModalOpen] = useState(false)
+  const [newJobUrl, setNewJobUrl] = useState('')
+  const [isSubmittingJob, setIsSubmittingJob] = useState(false)
 
   useEffect(() => {
     setLoading(true);
@@ -182,6 +185,35 @@ function App() {
     }
   };
 
+  const handleAddJobSubmit = async (e) => {
+    e.preventDefault();
+    if (!newJobUrl) return;
+    
+    try {
+      new URL(newJobUrl);
+    } catch (_) {
+      alert("Please enter a valid URL.");
+      return;
+    }
+
+    setIsSubmittingJob(true);
+    try {
+      await addDoc(collection(db, 'jobs'), {
+        job_url: newJobUrl,
+        status: 'pending',
+        created_at: serverTimestamp()
+      });
+      alert("Job URL added successfully! It is now pending.");
+      setIsAddJobModalOpen(false);
+      setNewJobUrl('');
+    } catch (err) {
+      console.error("Error adding job:", err);
+      alert(`Error adding job: ${err.message}`);
+    } finally {
+      setIsSubmittingJob(false);
+    }
+  };
+
   const filteredJobs = jobs.filter(job => {
     if (!showAllJobs && (job.match_score === undefined || job.match_score < 70)) return false;
 
@@ -265,6 +297,13 @@ function App() {
                 Relevant Only (Score 70+)
               </button>
             </div>
+            <button
+              onClick={() => setIsAddJobModalOpen(true)}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition-all duration-200 ease-in-out flex items-center gap-2 mr-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+              Add Job URL
+            </button>
             <button
               onClick={handleDeleteSelected}
               disabled={selectedJobs.length === 0}
@@ -544,6 +583,64 @@ function App() {
                 </a>
               )}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Add Job Modal */}
+      {isAddJobModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" onClick={() => setIsAddJobModalOpen(false)}>
+          <div className="bg-gray-800 border border-gray-700 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="p-6 border-b border-gray-700 flex justify-between items-center">
+              <h2 className="text-xl font-bold text-gray-100 flex items-center gap-2">
+                <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                Add Job URL Manually
+              </h2>
+              <button onClick={() => setIsAddJobModalOpen(false)} className="text-gray-400 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+            </div>
+            <form onSubmit={handleAddJobSubmit} className="p-6 space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Job URL</label>
+                <input
+                  type="url"
+                  required
+                  placeholder="https://example.com/job/123"
+                  value={newJobUrl}
+                  onChange={(e) => setNewJobUrl(e.target.value)}
+                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-shadow"
+                  autoFocus
+                />
+                <p className="mt-2 text-xs text-gray-500">
+                  The backend engine will automatically scrape this URL and evaluate it.
+                </p>
+              </div>
+              <div className="flex justify-end gap-3 pt-4 border-t border-gray-700/50">
+                <button
+                  type="button"
+                  onClick={() => setIsAddJobModalOpen(false)}
+                  className="px-5 py-2.5 rounded-lg font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition-colors border border-gray-600"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmittingJob || !newJobUrl}
+                  className="px-5 py-2.5 rounded-lg font-semibold text-white bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-900 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors shadow-lg shadow-emerald-500/20 flex items-center gap-2"
+                >
+                  {isSubmittingJob ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : 'Submit URL'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
