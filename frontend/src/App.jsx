@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore'
+import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from 'firebase/firestore'
 import { db } from './firebase'
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
     notes: ''
   })
   const [activeFilterColumn, setActiveFilterColumn] = useState(null)
+  const [selectedJobs, setSelectedJobs] = useState([])
 
   useEffect(() => {
     setLoading(true);
@@ -143,6 +144,21 @@ function App() {
     }
   }
 
+  const handleDeleteSelected = async () => {
+    if (!selectedJobs.length) return;
+    if (!window.confirm(`Are you sure you want to delete ${selectedJobs.length} selected job(s)?`)) return;
+    
+    try {
+      await Promise.all(
+        selectedJobs.map(jobId => deleteDoc(doc(db, "jobs", jobId)))
+      );
+      setSelectedJobs([]);
+    } catch (err) {
+      console.error("Error deleting jobs: ", err);
+      alert(`Error deleting jobs: ${err.message}`);
+    }
+  };
+
   const filteredJobs = jobs.filter(job => {
     if (!showAllJobs && (job.match_score === undefined || job.match_score < 70)) return false;
 
@@ -226,6 +242,13 @@ function App() {
                 Relevant Only (Score 70+)
               </button>
             </div>
+            <button
+              onClick={handleDeleteSelected}
+              disabled={selectedJobs.length === 0}
+              className="bg-red-600 hover:bg-red-500 disabled:bg-gray-800 disabled:text-gray-500 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition-all duration-200 ease-in-out flex items-center"
+            >
+              Delete Selected {selectedJobs.length > 0 && `(${selectedJobs.length})`}
+            </button>
             <button 
               onClick={handleProcessMock} 
               disabled={processing || scanning || scanningAts}
@@ -298,6 +321,23 @@ function App() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-gray-800/80 border-b border-gray-700 text-gray-400 text-sm uppercase tracking-wider">
+                    <th className="p-4 w-12 text-center">
+                      <input 
+                        type="checkbox" 
+                        className="w-4 h-4 rounded bg-gray-700 border-gray-600 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        checked={filteredJobs.length > 0 && filteredJobs.every(j => selectedJobs.includes(j.id))}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            const newIds = new Set(selectedJobs);
+                            filteredJobs.forEach(j => newIds.add(j.id));
+                            setSelectedJobs(Array.from(newIds));
+                          } else {
+                            const visibleIds = new Set(filteredJobs.map(j => j.id));
+                            setSelectedJobs(selectedJobs.filter(id => !visibleIds.has(id)));
+                          }
+                        }}
+                      />
+                    </th>
                     <th className="p-4 font-semibold relative cursor-pointer hover:bg-gray-700/50 select-none group" onClick={(e) => toggleFilter('title', e)}>
                       <div className="flex items-center space-x-1">
                         <span>Job Title</span>
@@ -325,7 +365,21 @@ function App() {
                 </thead>
                 <tbody className="divide-y divide-gray-700/50">
                   {filteredJobs.map((job) => (
-                    <tr key={job.id} className="hover:bg-gray-700/30 transition-colors">
+                    <tr key={job.id} className={`hover:bg-gray-700/30 transition-colors ${selectedJobs.includes(job.id) ? 'bg-blue-900/20' : ''}`}>
+                      <td className="p-4 text-center">
+                        <input 
+                          type="checkbox" 
+                          className="w-4 h-4 rounded bg-gray-700 border-gray-600 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                          checked={selectedJobs.includes(job.id)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedJobs(prev => [...prev, job.id]);
+                            } else {
+                              setSelectedJobs(prev => prev.filter(id => id !== job.id));
+                            }
+                          }}
+                        />
+                      </td>
                       <td className="p-4">
                         <div className="flex flex-col space-y-1">
                           <div className="font-medium text-gray-200 flex flex-wrap items-center gap-2">
