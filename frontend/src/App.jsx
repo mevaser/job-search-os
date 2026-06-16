@@ -2,6 +2,29 @@ import { useState, useEffect } from 'react'
 import { collection, query, orderBy, onSnapshot, deleteDoc, doc } from 'firebase/firestore'
 import { db } from './firebase'
 
+const CustomCheckbox = ({ checked, onChange }) => (
+  <div 
+    onClick={(e) => { e.stopPropagation(); onChange(!checked); }}
+    className={`w-5 h-5 rounded flex items-center justify-center cursor-pointer transition-all duration-200 border ${
+      checked 
+        ? 'bg-blue-600 border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.5)]' 
+        : 'bg-gray-800 border-gray-600 hover:border-gray-500'
+    }`}
+  >
+    <svg 
+      className={`w-3.5 h-3.5 text-white transition-all duration-200 transform ${
+        checked ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+      }`} 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor" 
+      strokeWidth={3}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    </svg>
+  </div>
+);
+
 function App() {
   const [jobs, setJobs] = useState([])
   const [loading, setLoading] = useState(false)
@@ -322,12 +345,10 @@ function App() {
                 <thead>
                   <tr className="bg-gray-800/80 border-b border-gray-700 text-gray-400 text-sm uppercase tracking-wider">
                     <th className="p-4 w-12 text-center">
-                      <input 
-                        type="checkbox" 
-                        className="w-4 h-4 rounded bg-gray-700 border-gray-600 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      <CustomCheckbox 
                         checked={filteredJobs.length > 0 && filteredJobs.every(j => selectedJobs.includes(j.id))}
-                        onChange={(e) => {
-                          if (e.target.checked) {
+                        onChange={(isChecked) => {
+                          if (isChecked) {
                             const newIds = new Set(selectedJobs);
                             filteredJobs.forEach(j => newIds.add(j.id));
                             setSelectedJobs(Array.from(newIds));
@@ -367,12 +388,10 @@ function App() {
                   {filteredJobs.map((job) => (
                     <tr key={job.id} className={`hover:bg-gray-700/30 transition-colors ${selectedJobs.includes(job.id) ? 'bg-blue-900/20' : ''}`}>
                       <td className="p-4 text-center">
-                        <input 
-                          type="checkbox" 
-                          className="w-4 h-4 rounded bg-gray-700 border-gray-600 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        <CustomCheckbox 
                           checked={selectedJobs.includes(job.id)}
-                          onChange={(e) => {
-                            if (e.target.checked) {
+                          onChange={(isChecked) => {
+                            if (isChecked) {
                               setSelectedJobs(prev => [...prev, job.id]);
                             } else {
                               setSelectedJobs(prev => prev.filter(id => id !== job.id));
