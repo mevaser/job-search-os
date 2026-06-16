@@ -77,7 +77,8 @@ You must respond strictly in JSON format with the following four fields:
 def extract_job_text(url: str) -> str:
     """Scrape the given ATS URL and extract visible text using Jina Reader API with a fallback to Playwright for SPAs."""
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept': 'text/plain'
     }
     
     text = ""
@@ -91,21 +92,7 @@ def extract_job_text(url: str) -> str:
     except Exception as e:
         logging.warning(f"Jina extraction failed for {url}: {e}")
 
-    # Fallback: BeautifulSoup if Jina failed
-    if not text or len(text) <= 100:
-        try:
-            response = requests.get(url, headers=headers, timeout=15)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, 'html.parser')
-            for script in soup(["script", "style"]):
-                script.extract()
-            text = soup.get_text(separator=' ', strip=True)
-            print(f"DEBUG: Scraped {len(text)} characters from {url} (BeautifulSoup)")
-        except Exception as e:
-            logging.error(f"Failed to scrape {url} with BeautifulSoup: {e}")
-            text = ""
-
-    # Validation check for False Negatives (SPAs like Comeet/Greenhouse)
+    # Validation check for False Negatives
     false_negative_phrases = [
         "no open positions",
         "no job openings at the moment",
@@ -113,47 +100,53 @@ def extract_job_text(url: str) -> str:
         "we are sorry",
         "javascript is required",
         "enable javascript",
-        "please enable js"
+        "please enable js",
+        "verify you are human",
+        "security check"
     ]
     
-    is_suspicious = False
-    if len(text) < 300:
-        is_suspicious = True
-        
-    text_lower = text.lower()
-    for phrase in false_negative_phrases:
-        if phrase in text_lower:
-            is_suspicious = True
-            break
+    is_valid_jina = False
+    if text and len(text) > 300:
+        is_valid_jina = True
+        text_lower = text.lower()
+        for phrase in false_negative_phrases:
+            if phrase in text_lower:
+                is_valid_jina = False
+                break
+                
+    if is_valid_jina:
+        logging.info("Jina extraction successful and valid. Returning text immediately.")
+        return text[:15000]
+
+    logging.warning(f"Jina extraction was invalid or suspicious. Triggering Playwright fallback.")
+    
+    # Fallback: Playwright
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page()
+            page.goto(url, wait_until="networkidle", timeout=30000)
+            # Wait a bit for JS to render
+            page.wait_for_timeout(3000)
             
-    if is_suspicious:
-        logging.warning(f"Scraped text for {url} is suspicious. Triggering Playwright fallback.")
-        try:
-            from playwright.sync_api import sync_playwright
-            with sync_playwright() as p:
-                browser = p.chromium.launch(headless=True)
-                page = browser.new_page()
-                page.goto(url, wait_until="networkidle", timeout=30000)
-                # Wait a bit for JS to render
-                page.wait_for_timeout(3000)
-                
-                # Forcefully remove cookie banners and popups
-                page.evaluate('''() => {
-                    const selectors = [
-                        '[id*="cookie"]', '[class*="cookie"]', 
-                        '[class*="onetrust"]', '[id*="onetrust"]', 
-                        '[id*="consent"]', '[class*="consent"]', 
-                        '[class*="popup"]', '[id*="popup"]'
-                    ];
-                    document.querySelectorAll(selectors.join(', ')).forEach(el => el.remove());
-                }''')
-                
-                text = page.evaluate("document.body.innerText")
-                browser.close()
-                text = text.strip() if text else ""
-                print(f"DEBUG: Scraped {len(text)} characters from {url} (Playwright)")
-        except Exception as e:
-            logging.error(f"Playwright fallback failed for {url}: {e}")
+            # Forcefully remove cookie banners and popups
+            page.evaluate('''() => {
+                const selectors = [
+                    '[id*="cookie"]', '[class*="cookie"]', 
+                    '[class*="onetrust"]', '[id*="onetrust"]', 
+                    '[id*="consent"]', '[class*="consent"]', 
+                    '[class*="popup"]', '[id*="popup"]'
+                ];
+                document.querySelectorAll(selectors.join(', ')).forEach(el => el.remove());
+            }''')
+            
+            text = page.evaluate("document.body.innerText")
+            browser.close()
+            text = text.strip() if text else ""
+            print(f"DEBUG: Scraped {len(text)} characters from {url} (Playwright)")
+    except Exception as e:
+        logging.error(f"Playwright fallback failed for {url}: {e}")
 
     return text[:15000] if text else ""
 
