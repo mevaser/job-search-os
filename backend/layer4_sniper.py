@@ -64,6 +64,8 @@ Target Roles:
 Scoring Guidelines:
 - Give high fit scores (85-100) to roles that match these Target Roles and Candidate Profile skills.
 - Give lower scores for roles that require significant years of senior experience or do not align with the candidate's core stack.
+- STRICT RULE: If the provided text does not contain a clear, substantial, and valid job description (e.g., it is just navigation menus, product lists, boilerplate, or anti-bot messages), you MUST assign a "score" of 0. In this scenario, the "reason" MUST explicitly state: "Failed to extract a valid job description from the page.", and the "clean_description" MUST be set to "N/A".
+- Do NOT guess or assume the role's requirements based purely on the job title or URL if the actual body text is missing or invalid.
 
 You must respond strictly in JSON format with the following four fields:
 - "score": An integer from 0 to 100 representing how well the role fits the target criteria.
