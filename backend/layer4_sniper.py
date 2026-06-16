@@ -266,5 +266,72 @@ def process_targets():
     conn.close()
     logging.info("Finished processing all targets.")
 
+def process_pending_jobs():
+    """Fetch pending jobs from Firestore, evaluate them, and update the document."""
+    if not db_firestore:
+        logging.warning("Firebase not initialized. Cannot process pending jobs.")
+        return
+
+    logging.info("Checking for pending manually added jobs in Firestore...")
+    try:
+        pending_docs = db_firestore.collection('jobs').where('status', '==', 'pending').stream()
+    except Exception as e:
+        logging.error(f"Failed to fetch pending jobs: {e}")
+        return
+
+    for doc in pending_docs:
+        doc_id = doc.id
+        data = doc.to_dict()
+        url = data.get('job_url')
+        
+        if not url:
+            logging.warning(f"Pending job {doc_id} has no URL. Marking as failed.")
+            db_firestore.collection('jobs').document(doc_id).update({'status': 'failed'})
+            continue
+
+        logging.info(f"\n--- Processing Pending Job [{doc_id}] ---")
+        logging.info(f"URL: {url}")
+
+        job_text = extract_job_text(url)
+        if not job_text:
+            logging.info(f"Skipping evaluation due to missing text. Marking as failed.")
+            try:
+                db_firestore.collection('jobs').document(doc_id).update({'status': 'failed'})
+            except Exception as e:
+                logging.error(f"Could not update status to failed: {e}")
+            continue
+
+        evaluation = evaluate_job_with_llm(job_text)
+        
+        score = evaluation.get("score", 0)
+        reason = evaluation.get("reason", "No reason provided.")
+        job_title = evaluation.get("job_title", "Unknown Title")
+        job_description = evaluation.get("clean_description", job_text[:3000])
+        company = "Unknown Company"
+        
+        logging.info(f"Score: {score}")
+        logging.info(f"Job Title: {job_title}")
+        
+        try:
+            db_firestore.collection('jobs').document(doc_id).update({
+                'job_title': job_title,
+                'company_name': company,
+                'match_score': score,
+                'match_reason': reason,
+                'job_description': job_description,
+                'status': 'processed',
+                'timestamp': firestore.SERVER_TIMESTAMP
+            })
+            logging.info(f"Successfully updated pending job {doc_id} in Firestore.")
+        except Exception as e:
+            logging.error(f"Failed to update Firestore for {doc_id}: {e}")
+            try:
+                db_firestore.collection('jobs').document(doc_id).update({'status': 'failed'})
+            except:
+                pass
+        
+        time.sleep(2)
+
 if __name__ == "__main__":
+    process_pending_jobs()
     process_targets()
