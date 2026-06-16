@@ -75,17 +75,64 @@ You must respond strictly in JSON format with the following four fields:
 """
 
 def extract_job_text(url: str) -> str:
-    """Scrape the given ATS URL and extract visible text using Jina Reader API with a fallback to Playwright for SPAs."""
+    """Scrape the given ATS URL with JSON-LD, falling back to Jina Reader API, and finally Playwright."""
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept': 'text/plain'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
     
+    # 1. Primary: Fast JSON-LD Extraction
+    try:
+        logging.info(f"Attempting JSON-LD extraction for {url}")
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        for script in soup.find_all('script', type='application/ld+json'):
+            try:
+                if not script.string: continue
+                data = json.loads(script.string)
+                
+                # LD+JSON can be a list of objects or a single object
+                if isinstance(data, dict):
+                    data = [data]
+                    
+                for item in data:
+                    item_type = item.get('@type', '')
+                    if item_type == 'JobPosting' or (isinstance(item_type, list) and 'JobPosting' in item_type):
+                        logging.info("Successfully found valid JobPosting JSON-LD.")
+                        
+                        # Extract relevant fields
+                        parts = []
+                        if item.get('title'):
+                            parts.append(f"Title: {item['title']}")
+                        if item.get('description'):
+                            parts.append(f"Description:\n{item['description']}")
+                        if item.get('skills'):
+                            parts.append(f"Skills: {item['skills']}")
+                        if item.get('responsibilities'):
+                            parts.append(f"Responsibilities:\n{item['responsibilities']}")
+                        if item.get('qualifications'):
+                            parts.append(f"Qualifications:\n{item['qualifications']}")
+                            
+                        extracted_text = "\n\n".join(parts)
+                        # Strip HTML tags that might be inside the JSON fields
+                        extracted_text = BeautifulSoup(extracted_text, 'html.parser').get_text(separator=' ', strip=True)
+                        
+                        if len(extracted_text) > 100:
+                            return extracted_text[:15000]
+            except Exception as e:
+                logging.debug(f"Failed to parse a JSON-LD block: {e}")
+                continue
+    except Exception as e:
+        logging.warning(f"JSON-LD extraction request failed: {e}")
+
+    # 2. Secondary: Jina Reader API
+    jina_headers = headers.copy()
+    jina_headers['Accept'] = 'text/plain'
     text = ""
-    # Primary: Jina Reader API
     try:
         jina_url = f"https://r.jina.ai/{url}"
-        response = requests.get(jina_url, headers=headers, timeout=20)
+        response = requests.get(jina_url, headers=jina_headers, timeout=20)
         response.raise_for_status()
         text = response.text.strip()
         print(f"DEBUG: Scraped {len(text)} characters from {url} (Jina)")
@@ -120,7 +167,7 @@ def extract_job_text(url: str) -> str:
 
     logging.warning(f"Jina extraction was invalid or suspicious. Triggering Playwright fallback.")
     
-    # Fallback: Playwright
+    # 3. Tertiary Fallback: Playwright
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
