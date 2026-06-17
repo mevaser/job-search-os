@@ -4,6 +4,7 @@ import re
 import logging
 from email.header import decode_header
 import os
+from bs4 import BeautifulSoup
 from .models import add_pending_company, init_db
 
 # Configure logging
@@ -21,10 +22,20 @@ def connect_imap():
     logging.info("Successfully logged into IMAP.")
     return mail
 
-def extract_urls(text):
+def extract_urls(text, is_html=False):
+    urls = []
+    if is_html:
+        try:
+            soup = BeautifulSoup(text, 'html.parser')
+            for a in soup.find_all('a', href=True):
+                urls.append(a['href'])
+        except Exception as e:
+            logging.error(f"BeautifulSoup parsing error: {e}")
+            
     # Basic URL extraction regex - slightly more forgiving
     url_pattern = re.compile(r'(?:https?://|www\.)[^\s<>"]+')
-    return url_pattern.findall(text)
+    urls.extend(url_pattern.findall(text))
+    return urls
 
 def fetch_job_alerts():
     logging.info("Initializing database...")
@@ -58,23 +69,49 @@ def fetch_job_alerts():
         for response_part in msg_data:
             if isinstance(response_part, tuple):
                 msg = email.message_from_bytes(response_part[1])
-                subject, encoding = decode_header(msg["Subject"])[0]
-                if isinstance(subject, bytes):
-                    subject = subject.decode(encoding if encoding else 'utf-8')
+                sender = msg.get("From", "")
+                subject_header = msg.get("Subject", "")
                 
-                logging.info(f"--- Processing email: '{subject}' ---")
+                if not subject_header:
+                    logging.info("Skipped non-job email: [Empty Subject]")
+                    continue
+
+                subject, encoding = decode_header(subject_header)[0]
+                if isinstance(subject, bytes):
+                    subject = subject.decode(encoding if encoding else 'utf-8', errors='ignore')
+                
+                if not subject:
+                    logging.info("Skipped non-job email: [Empty Subject]")
+                    continue
+
+                subject_lower = subject.lower()
+                sender_lower = sender.lower()
+                
+                # Check for skip conditions
+                if "security alert" in subject_lower or "2-step verification" in subject_lower:
+                    logging.info(f"Skipped non-job email: {subject}")
+                    continue
+                    
+                # Check for include conditions
+                if "linkedin.com" in sender_lower or "job alert" in subject_lower or "fwd:" in subject_lower:
+                    logging.info(f"--- Processing email: '{subject}' from '{sender}' ---")
+                else:
+                    logging.info(f"Skipped non-job email: {subject}")
+                    continue
                 
                 urls_found = []
                 
                 # Extract body
                 if msg.is_multipart():
                     for part in msg.walk():
-                        if part.get_content_type() == "text/plain" or part.get_content_type() == "text/html":
+                        content_type = part.get_content_type()
+                        if content_type in ["text/plain", "text/html"]:
                             body = part.get_payload(decode=True).decode(errors='ignore')
-                            urls_found.extend(extract_urls(body))
+                            urls_found.extend(extract_urls(body, is_html=(content_type == "text/html")))
                 else:
+                    content_type = msg.get_content_type()
                     body = msg.get_payload(decode=True).decode(errors='ignore')
-                    urls_found.extend(extract_urls(body))
+                    urls_found.extend(extract_urls(body, is_html=(content_type == "text/html")))
                 
                 unique_urls = set(urls_found)
                 if not unique_urls:
